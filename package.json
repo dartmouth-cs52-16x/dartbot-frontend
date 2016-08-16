@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "axios": "^0.13.1",
+    "google-map-react": "^0.17.0",
     "google-maps": "^3.2.1",
     "immutable": "^3.8.1",
     "leaflet": "^0.7.7",

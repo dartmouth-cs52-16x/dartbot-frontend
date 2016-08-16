@@ -1,35 +1,32 @@
-// import React from 'react';
-// import '../style.scss';
+import React, { Component } from 'react';
+// import shouldPureComponentUpdate from 'react-pure-render/function';
+import GoogleMap from 'google-map-react';
 
-// trying to get this to work https://jsfiddle.net/paul_lecam/q2v7t59h/
-// https://github.com/PaulLeCam/react-leaflet/blob/master/docs/Getting%20started.md
-const React = window.React;
-const { Map, TileLayer, Marker, Popup } = window.ReactLeaflet;
+export default class Map extends Component {
+  static defaultProps = {
+    center: { lat: 59.938043, lng: 30.337157 },
+    zoom: 9,
+    greatPlaceCoords: { lat: 59.724465, lng: 30.080121 },
+  };
 
-class MapDisplay extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      lat: 51.505,
-      lng: -0.09,
-      zoom: 13,
-    };
+  constructor(props) {
+    super(props);
   }
+
+  // shouldComponentUpdate = shouldPureComponentUpdate;
+
   render() {
-    const position = [this.state.lat, this.state.lng];
     return (
-      <Map center={position} zoom={this.state.zoom}>
-        <TileLayer
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+      <div id="mapContainer">
+        <GoogleMap
+          id="googlemapContainer"
+          defaultCenter={this.props.center}
+          defaultZoom={this.props.zoom}
+          bootstrapURLKeys={{
+            key: 'AIzaSyDkwluTAgwsZKe2_u2cW2rvSe1dBVgz6zw',
+          }}
         />
-        <Marker position={position}>
-          <Popup>
-            <span>A pretty CSS3 popup. <br /> Easily customizable.</span>
-          </Popup>
-        </Marker>
-      </Map>
+      </div>
     );
   }
 }
-window.ReactDOM.render(<MapDisplay />, document.getElementById('container'));
