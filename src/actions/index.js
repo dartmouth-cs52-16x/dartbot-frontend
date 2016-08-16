@@ -105,7 +105,7 @@ export function deletePost(id) {
         type: ActionTypes.DELETE_BIO,
         payload: response.data,
       });
-      // browserHistory.push('/admin/profiles');
+      browserHistory.push('/');
     }).catch(error => {
       // error
     });
@@ -120,7 +120,7 @@ export function signinUser(loginInfo) {
         type: ActionTypes.AUTH_USER,
       });
       localStorage.setItem('token', response.data.token);
-      browserHistory.push('/');
+      browserHistory.push('/admin');
     }).catch(err => {
       console.log(err);
       dispatch(reportError(`Sign In Failed: ${err.response.data}`));

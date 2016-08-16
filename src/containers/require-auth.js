@@ -10,7 +10,7 @@ export default function (ComposedComponent) {
       }
     }
     componentWillUpdate(nextProps) {
-      if (!this.nextProps.authenticated) {
+      if (!nextProps.authenticated) {
         browserHistory.push('/signin');
       }
     }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import BioItem from '../components/bio-item';
+import BioItem from './profilesComponents/bio-item';
 
 const BioContainer = (props) => {
   const bioItems = props.bios.map((bio) => {

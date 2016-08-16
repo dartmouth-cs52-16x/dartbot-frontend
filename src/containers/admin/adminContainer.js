@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import BarChart from 'react-bar-chart';
+import { Link } from 'react-router';
 
-import { getData } from '../actions';
+import { getData } from '../../actions';
 
 class AdminContainer extends Component {
   constructor(props) {
@@ -41,6 +42,7 @@ class AdminContainer extends Component {
         <div className="analytics">
         {this.renderGraphs()}
         </div>
+        <Link to="/admin/update" > Edit Tour Guide Profiles </Link>
       </div>
     );
   }
