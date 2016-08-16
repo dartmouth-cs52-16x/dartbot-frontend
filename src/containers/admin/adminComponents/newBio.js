@@ -40,9 +40,5 @@ class NewBio extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  data: state.admin.data,
-});
 
-
-export default connect(mapStateToProps, { createBio })(NewBio);
+export default connect(null, { createBio })(NewBio);
