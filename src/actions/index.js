@@ -29,3 +29,17 @@ export function fetchData() {
     });
   });
 }
+
+export function fetchBios() {
+  return (dispatch => {
+    axios.get(`${ROOT_URL}/data`)
+    .then(response => {
+      dispatch({
+        type: ActionTypes.FETCH_BIOS,
+        data: response.data,
+      });
+    }).catch(error => {
+      console.log(error);
+    });
+  });
+}
