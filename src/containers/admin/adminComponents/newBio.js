@@ -25,9 +25,9 @@ class NewBio extends Component {
     });
   }
 
-/*  onClick() {
+  onClick() {
     this.props.createBio(this.state);
-  }*/
+  }
 
   render() {
     return (
