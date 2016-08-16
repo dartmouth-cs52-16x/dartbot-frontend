@@ -2,8 +2,88 @@ body {
   font-family: "Roboto", sans-serif;
   color: rgb(10%, 10%, 10%);
   background: darken(white, 10%);
-  margin: 50px;
+  margin: 50px 50px 50px 50px;
 }
 iframe {
   margin: auto;
+}
+/* Styles for the NavBar */
+#navbarContainer {
+  background-color: #ffffff;
+  color: #454343;
+  height: 40px;
+  width: 100vw;
+  margin-top: -50px;
+  margin-left: -50px;
+  padding-top: 25px;
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#pageLinks {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+#homeLink {
+  text-decoration: none;
+  padding-left: 5vw;
+  color: black;
+  opacity: .6;
+  transition: all 0.5s ease;
+  font-weight: 300;
+  font-family: "Helvetica", sans-serif;
+}
+#homeLink:hover {
+  text-decoration: underline;
+  opacity: 1;
+}
+#bioLink{
+  text-decoration: none;
+  padding-right: 20px;
+  color: red;
+  opacity: .6;
+  transition: all 0.5s ease;
+  font-weight: 300;
+  font-family: "Helvetica", sans-serif;
+}
+#bioLink:hover {
+  text-decoration: underline;
+  opacity: 1;
+}
+#botLink{
+  text-decoration: none;
+  padding-right: 20px;
+  color: blue;
+  opacity: .6;
+  transition: all 0.5s ease;
+  font-weight: 300;
+  font-family: "Helvetica", sans-serif;
+}
+#botLink:hover {
+  text-decoration: underline;
+  opacity: 1;
+}
+#adminLink{
+  text-decoration: none;
+  padding-right: 5vw;
+  color: green;
+  opacity: .6;
+  transition: all 0.5s ease;
+  font-weight: 300;
+  font-family: "Helvetica", sans-serif;
+}
+#adminLink:hover {
+  text-decoration: underline;
+  opacity: 1;
+}
+/* Styles for Map Page */
+#mapContainer {
+  padding-top: 100px;
+}
+#mapid { height: 180px; }
+.leaflet-container {
+    height: 400px;
+    width: 100%;
 }
