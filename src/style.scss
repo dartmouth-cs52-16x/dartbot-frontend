@@ -104,3 +104,18 @@ iframe {
 #pinLetter {
   margin-top: 5px;
 }
+.admin {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  h1 {
+    margin: auto;
+  }
+}
+.analytics {
+  display: flex;
+  flex-flow: row wrap;
+  .graph {
+    margin: 20px;
+  }
+}

@@ -7,8 +7,18 @@ const AdminReducer = (state = {
   switch (action.type) {
     case ActionTypes.FETCH_DATA:
       return ({
-        authenticated: state.authenticated,
+        authenticated: state.admin.authenticated,
         data: action.data,
+      });
+    case ActionTypes.AUTH_USER:
+      return ({
+        authenticated: true,
+        data: state.data,
+      });
+    case ActionTypes.DEAUTH_USER:
+      return ({
+        authenticated: false,
+        data: state.admin.data,
       });
     default:
       return state;

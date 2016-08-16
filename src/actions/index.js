@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { browserHistory } from 'react-router';
 
-// const ROOT_URL = '';
-const ROOT_URL = 'http://localhost:9090/api';
+const ROOT_URL = 'http://dartmouthbot.herokuapp.com/api';
+// const ROOT_URL = 'http://localhost:9090/api';
 
 // const API_KEY = '?key=..'
 
@@ -12,9 +13,24 @@ export const ActionTypes = {
   FETCH_BIO: 'FETCH_BIO',
   FETCH_BIOS: 'FETCH_BIOS',
   FETCH_DATA: 'FETCH_DATA',
-  ADD_DATA: 'ADD_DATA',
-  UPDATE_DATA: 'UPDATE_DATA',
+  AUTH_USER: 'AUTH_USER',
+  DEAUTH_USER: 'DEAUTH_USER',
+  SET_ERROR: 'SET_ERROR',
+  UNSET_ERROR: 'UNSET_ERROR',
 };
+
+function reportError(error) {
+  return ({
+    type: ActionTypes.SET_ERROR,
+    message: error,
+  });
+}
+
+export function removeError() {
+  return ({
+    type: ActionTypes.UNSET_ERROR,
+  });
+}
 
 export function fetchData() {
   return (dispatch => {
@@ -28,4 +44,107 @@ export function fetchData() {
       console.log(error);
     });
   });
+}
+
+export function fetchBios() {
+  return (dispatch => {
+    axios.get(`${ROOT_URL}/bios`)
+    .then(response => {
+      dispatch({
+        type: ActionTypes.FETCH_BIOS,
+        bios: response.data,
+      }).catch(error => {
+        reportError(error);
+      });
+    });
+  });
+}
+
+export function fetchBio(id) {
+  return (dispatch => {
+    axios.get(`${ROOT_URL}/bios/:${id}`)
+    .then(response => {
+      dispatch({
+        type: ActionTypes.FETCH_BIO,
+        bio: response.data,
+      });
+    });
+  });
+}
+
+export function createBio(bio) {
+  return (dispatch) => {
+    axios.post(`${ROOT_URL}/bios`, bio).then(response => {
+      dispatch({
+        type: ActionTypes.CREATE_BIO,
+        payload: response.data,
+      });
+      // browserHistory.push('/');
+    }).catch(error => {
+      // dispatch({
+      //   type: ActionTypes.ERROR,
+      // });
+    });
+  };
+}
+
+export function updateBio(bio, id) {
+  return (dispatch) => {
+    axios.put(`${ROOT_URL}/bios/${id}`, bio);
+    dispatch({
+      type: ActionTypes.UPDATE_BIO,
+      payload: bio,
+    });
+  };
+}
+
+export function deletePost(id) {
+  return (dispatch) => {
+    axios.delete(`${ROOT_URL}/bios/${id}`).then((response) => {
+      dispatch({
+        type: ActionTypes.DELETE_BIO,
+        payload: response.data,
+      });
+      browserHistory.push('/');
+    }).catch(error => {
+      // error
+    });
+  };
+}
+
+export function signinUser(loginInfo) {
+  return (dispatch) => {
+    axios.post(`${ROOT_URL}/signin`, loginInfo)
+    .then(response => {
+      dispatch({
+        type: ActionTypes.AUTH_USER,
+      });
+      localStorage.setItem('token', response.data.token);
+      browserHistory.push('/admin');
+    }).catch(err => {
+      console.log(err);
+      dispatch(reportError(`Sign In Failed: ${err.response.data}`));
+    });
+  };
+}
+
+export function signupUser(loginInfo) {
+  return (dispatch) => {
+    axios.post(`${ROOT_URL}/signup`, loginInfo)
+    .then(response => {
+      dispatch({ type: ActionTypes.AUTH_USER });
+      localStorage.setItem('token', response.data.token);
+      browserHistory.push('/');
+    }).catch(err => {
+      dispatch(reportError(`Sign Up Failed: ${err.response.data}`));
+    });
+  };
+}
+
+export function signoutUser() {
+  return (dispatch) => {
+    localStorage.removeItem('token');
+    dispatch({ type: ActionTypes.DEAUTH_USER });
+    browserHistory.push('/');
+  };
 }
