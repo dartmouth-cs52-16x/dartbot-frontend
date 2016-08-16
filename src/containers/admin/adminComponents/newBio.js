@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-router';
+import { createBio } from '../../../actions';
 
 
-class UpdateTour extends Component {
+class NewBio extends Component {
 
   constructor(props) {
     super(props);
@@ -26,9 +27,8 @@ class UpdateTour extends Component {
   }
 
   onClick() {
-
+    this.props.createBio(this.state);
   }
-
 
   render() {
     return (
@@ -42,7 +42,7 @@ class UpdateTour extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  bios: state.profiles.bios,
+
 });
 
-export default connect(mapStateToProps, null)(UpdateTour);
+export default connect(mapStateToProps, { createBio })(NewBio);

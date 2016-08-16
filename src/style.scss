@@ -112,7 +112,18 @@ iframe {
     margin: auto;
   }
 }
-.analytics {
+
+#adminNav {
+  display: flex;
+  flex-flow: row;
+  margin: auto;
+  padding: 2rem;
+  a {
+    margin: 5px;
+  }
+}
+
+.graphs {
   display: flex;
   flex-flow: row wrap;
   .graph {

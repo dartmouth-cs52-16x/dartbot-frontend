@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import BarChart from 'react-bar-chart';
 import { Link } from 'react-router';
 
 import { getData } from '../../actions';
@@ -9,40 +8,17 @@ class AdminContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: {},
     };
-    this.renderGraphs = this.renderGraphs.bind(this);
-  }
-
-  componentWillMount() {
-    this.setState({
-      data: this.props.data,
-      authenticated: this.props.authenticated,
-    });
-  }
-
-  renderGraphs = () => {
-    this.state.data.forEach((dataSet) => {
-      return (
-        <div className="graph">
-          <BarChart ylabel="Word frequencey"
-            width={500}
-            height={500}
-            data={dataSet}
-          />
-        </div>
-      );
-    });
   }
 
   render() {
     return (
       <div className="admin">
-        <h1>Analytics</h1>
-        <div className="analytics">
-        {this.renderGraphs()}
+        <div id="adminNav">
+          <Link to="./analytics">Analytics</Link>
+          <Link to="./newbio">New Tour Guide Profile</Link>
         </div>
-        <Link to="/admin/update" > Edit Tour Guide Profiles </Link>
+        {this.props.children}
       </div>
     );
   }

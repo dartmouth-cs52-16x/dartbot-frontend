@@ -9,7 +9,8 @@ import Bot from './components/bot';
 import RequireAuth from './containers/require-auth';
 import SignIn from './containers/signin';
 import SignUp from './containers/signup';
-import UpdateContainer from './containers/admin/updateContainer';
+import NewBio from './containers/admin/adminComponents/newBio';
+import Analytics from './containers/admin/adminComponents/analytics';
 import UpdateBio from './containers/admin/adminComponents/updateBio';
 
 export default(
@@ -17,7 +18,8 @@ export default(
     <IndexRoute component={Map} />
     <Route path="profiles" component={BioContainer} />
     <Route path="admin" component={RequireAuth(AdminContainer)}>
-      <Route path="update" component={UpdateContainer} />
+      <Route path="analytics" component={Analytics} />
+      <Route path="newbio" compoent={NewBio} />
       <Route path="bios/:id" component={UpdateBio} />
     </Route>
     <Route path="signin" component={SignIn} />
