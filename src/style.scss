@@ -1,3 +1,4 @@
+$buttonColor: lighten(blue, 30%);
 body {
   font-family: "Roboto", sans-serif;
   color: rgb(10%, 10%, 10%);
@@ -6,6 +7,7 @@ body {
 }
 iframe {
   margin: auto;
+  margin: 20px;
 }
 /* Styles for the NavBar */
 #navbarContainer {
@@ -53,6 +55,11 @@ iframe {
 #bioLink:hover {
   text-decoration: underline;
   opacity: 1;
+}
+#bot {
+  justify-content: center;
+  display: flex;
+  flex-flow: column;
 }
 #botLink{
   text-decoration: none;
@@ -121,6 +128,38 @@ iframe {
   a {
     margin: 5px;
   }
+}
+
+.newbar {
+  padding: 30px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  input, textarea {
+    font-size: 16px;
+    margin: 3px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: none;
+    border: none;
+  }
+  button {
+    font-size: 16px;
+    padding: 10px;
+    margin: auto;
+    margin-top: 3px;
+    border-radius: 5px;
+    font-family: "Reem Kufi", sans-serif;
+    border: 1px solid transparentize(black, .75);;
+    background-color: $buttonColor;
+  }
+  button:hover {
+    background-color: darken($buttonColor, 10);
+  }
+}
+
+.admin {
+  padding: 20px;
 }
 
 .graphs {

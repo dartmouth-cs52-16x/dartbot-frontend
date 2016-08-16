@@ -11,6 +11,7 @@ const BioContainer = (props) => {
 
   return (
     <div className="bios">
+      <h1> Tour Guide Profiles</h1>
       {bioItems}
     </div>
   );
@@ -20,4 +21,4 @@ const mapStateToProps = (state) => ({
   bios: state.bios.all,
 });
 
-export default connect(mapStateToProps)(BioContainer);
+export default connect(mapStateToProps, null)(BioContainer);

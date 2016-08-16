@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-import { getData } from '../../actions';
 
 class AdminContainer extends Component {
   constructor(props) {
@@ -24,9 +22,5 @@ class AdminContainer extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  data: state.admin.data,
-});
 
-
-export default connect(mapStateToProps, { getData })(AdminContainer);
+export default (AdminContainer);

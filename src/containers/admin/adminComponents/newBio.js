@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { connect } from 'react-router';
+import { connect } from 'react-redux';
 import { createBio } from '../../../actions';
 
 
 class NewBio extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -26,9 +25,9 @@ class NewBio extends Component {
     });
   }
 
-  onClick() {
+/*  onClick() {
     this.props.createBio(this.state);
-  }
+  }*/
 
   render() {
     return (
@@ -42,7 +41,8 @@ class NewBio extends Component {
 }
 
 const mapStateToProps = (state) => ({
-
+  data: state.admin.data,
 });
+
 
 export default connect(mapStateToProps, { createBio })(NewBio);
