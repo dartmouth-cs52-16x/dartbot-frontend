@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import BioItem from '../components/bio-item';
 
@@ -17,7 +17,7 @@ const BioContainer = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  bios: state.profiles.bios,
+  bios: state.bios.all,
 });
 
 export default connect(mapStateToProps)(BioContainer);

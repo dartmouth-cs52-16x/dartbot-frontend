@@ -77,7 +77,7 @@ export function createBio(bio) {
     axios.post(`${ROOT_URL}/bios`, bio).then(response => {
       dispatch({
         type: ActionTypes.CREATE_BIO,
-        payload: { response.data },
+        payload: response.data,
       });
       // browserHistory.push('/');
     }).catch(error => {
@@ -103,7 +103,7 @@ export function deletePost(id) {
     axios.delete(`${ROOT_URL}/bios/${id}`).then((response) => {
       dispatch({
         type: ActionTypes.DELETE_BIO,
-        payload: { response.data },
+        payload: response.data,
       });
       // browserHistory.push('/admin/profiles');
     }).catch(error => {

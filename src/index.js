@@ -6,7 +6,7 @@ import { Router, browserHistory } from 'react-router';
 import routes from './routes';
 import thunk from 'redux-thunk';
 import './style.scss';
-import Reducer from './reducers/reducer';
+import Reducer from './reducers/index';
 
 const store = createStore(Reducer, compose(
   applyMiddleware(thunk),
