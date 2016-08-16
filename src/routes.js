@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
 import App from './components/app';
-import Welcome from './components/welcome';
+import Map from './components/map';
 import BioContainer from './containers/profiles/bioContainer';
 import AdminContainer from './containers/admin/adminContainer';
 import Bot from './components/bot';
@@ -14,7 +14,7 @@ import UpdateBio from './containers/admin/adminComponents/updateBio';
 
 export default(
   <Route path="/" component={App}>
-    <IndexRoute component={Welcome} />
+    <IndexRoute component={Map} />
     <Route path="profiles" component={BioContainer} />
     <Route path="admin" component={RequireAuth(AdminContainer)}>
       <Route path="update" component={UpdateContainer} />
