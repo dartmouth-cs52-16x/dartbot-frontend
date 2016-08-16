@@ -4,16 +4,10 @@ import GoogleMap from 'google-map-react';
 
 export default class Map extends Component {
   static defaultProps = {
-    center: { lat: 59.938043, lng: 30.337157 },
-    zoom: 9,
+    center: { lat: 43.70357989999999, lng: -72.28878229999998 },
+    zoom: 17,
     greatPlaceCoords: { lat: 59.724465, lng: 30.080121 },
   };
-
-  constructor(props) {
-    super(props);
-  }
-
-  // shouldComponentUpdate = shouldPureComponentUpdate;
 
   render() {
     return (
