@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-router';
+import { connect } from 'react-redux';
 import { createBio } from '../../../actions';
 
 
@@ -42,7 +42,7 @@ class NewBio extends Component {
 }
 
 const mapStateToProps = (state) => ({
-
+  all: state.bios.all,
 });
 
 export default connect(mapStateToProps, { createBio })(NewBio);

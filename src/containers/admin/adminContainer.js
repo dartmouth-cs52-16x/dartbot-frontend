@@ -15,8 +15,8 @@ class AdminContainer extends Component {
     return (
       <div className="admin">
         <div id="adminNav">
-          <Link to="./analytics">Analytics</Link>
-          <Link to="./newbio">New Tour Guide Profile</Link>
+          <Link to="admin/analytics">Analytics</Link>
+          <Link to="admin/newbio">New Tour Guide Profile</Link>
         </div>
         {this.props.children}
       </div>
