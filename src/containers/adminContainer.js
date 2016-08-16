@@ -8,7 +8,6 @@ class AdminContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      authenticated: false,
       data: {},
     };
     this.renderGraphs = this.renderGraphs.bind(this);
@@ -48,7 +47,6 @@ class AdminContainer extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  authenticated: state.admin.authenticated,
   data: state.admin.data,
 });
 

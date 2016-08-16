@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
 
-// const ROOT_URL = '';
-const ROOT_URL = 'http://localhost:9090/api';
+const ROOT_URL = 'http://dartmouthbot.herokuapp.com/api';
+// const ROOT_URL = 'http://localhost:9090/api';
 
 // const API_KEY = '?key=..'
 
@@ -46,6 +46,32 @@ export function fetchData() {
   });
 }
 
+export function fetchBios() {
+  return (dispatch => {
+    axios.get(`${ROOT_URL}/bios`)
+    .then(response => {
+      dispatch({
+        type: ActionTypes.FETCH_BIOS,
+        bios: response.data,
+      }).catch(error => {
+        reportError(error);
+      });
+    });
+  });
+}
+
+export function fetchBio(id) {
+  return (dispatch => {
+    axios.get(`${ROOT_URL}/bios/:${id}`)
+    .then(response => {
+      dispatch({
+        type: ActionTypes.FETCH_BIO,
+        bio: response.data,
+      });
+    });
+  });
+}
+
 export function signinUser(loginInfo) {
   return (dispatch) => {
     axios.post(`${ROOT_URL}/signin`, loginInfo)
@@ -59,5 +85,26 @@ export function signinUser(loginInfo) {
       console.log(err);
       dispatch(reportError(`Sign In Failed: ${err.response.data}`));
     });
+  };
+}
+
+export function signupUser(loginInfo) {
+  return (dispatch) => {
+    axios.post(`${ROOT_URL}/signup`, loginInfo)
+    .then(response => {
+      dispatch({ type: ActionTypes.AUTH_USER });
+      localStorage.setItem('token', response.data.token);
+      browserHistory.push('/');
+    }).catch(err => {
+      dispatch(reportError(`Sign Up Failed: ${err.response.data}`));
+    });
+  };
+}
+
+export function signoutUser() {
+  return (dispatch) => {
+    localStorage.removeItem('token');
+    dispatch({ type: ActionTypes.DEAUTH_USER });
+    browserHistory.push('/');
   };
 }
