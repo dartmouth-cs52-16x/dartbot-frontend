@@ -3,7 +3,7 @@ import { ActionTypes } from '../actions';
 const BioReducer = (state = { all: [], bio: null }, action) => {
   switch (action.type) {
     case ActionTypes.FETCH_BIOS:
-      return { ...state, all: action.payload };
+      return { ...state, all: action.bios };
     case ActionTypes.FETCH_BIO:
       return { ...state, bio: action.payload };
     case ActionTypes.CREATE_BIO:
