@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { browserHistory } from 'react-router';
 
 // const ROOT_URL = '';
 const ROOT_URL = 'http://localhost:9090/api';
@@ -12,9 +13,24 @@ export const ActionTypes = {
   FETCH_BIO: 'FETCH_BIO',
   FETCH_BIOS: 'FETCH_BIOS',
   FETCH_DATA: 'FETCH_DATA',
-  ADD_DATA: 'ADD_DATA',
-  UPDATE_DATA: 'UPDATE_DATA',
+  AUTH_USER: 'AUTH_USER',
+  DEAUTH_USER: 'DEAUTH_USER',
+  SET_ERROR: 'SET_ERROR',
+  UNSET_ERROR: 'UNSET_ERROR',
 };
+
+function reportError(error) {
+  return ({
+    type: ActionTypes.SET_ERROR,
+    message: error,
+  });
+}
+
+export function removeError() {
+  return ({
+    type: ActionTypes.UNSET_ERROR,
+  });
+}
 
 export function fetchData() {
   return (dispatch => {
@@ -28,4 +44,20 @@ export function fetchData() {
       console.log(error);
     });
   });
+}
+
+export function signinUser(loginInfo) {
+  return (dispatch) => {
+    axios.post(`${ROOT_URL}/signin`, loginInfo)
+    .then(response => {
+      dispatch({
+        type: ActionTypes.AUTH_USER,
+      });
+      localStorage.setItem('token', response.data.token);
+      browserHistory.push('/');
+    }).catch(err => {
+      console.log(err);
+      dispatch(reportError(`Sign In Failed: ${err.response.data}`));
+    });
+  };
 }
