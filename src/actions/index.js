@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
 
-const ROOT_URL = 'http://dartmouthbot.herokuapp.com/api';
-// const ROOT_URL = 'http://localhost:9090/api';
+// const ROOT_URL = 'http://dartmouthbot.herokuapp.com/api';
+const ROOT_URL = 'http://localhost:9090/api';
 
 // const API_KEY = '?key=..'
 
@@ -72,14 +72,32 @@ export function fetchBio(id) {
   });
 }
 
-export function createBio(bio) {
+function uploadImage(file, id) {
+  axios.post(`${ROOT_URL}/images`, { filename: file.name, filetype: file.type, id })
+  .then(response => {
+    const signedUrl = response.data.requestUrl;
+
+    const options = {
+      headers: {
+        'Content-Type': file.type,
+      },
+    };
+    axios.put(signedUrl, file, options);
+  }).catch(error => {
+    // catch error here
+  });
+}
+
+export function createBio(bio, file) {
   return (dispatch) => {
     axios.post(`${ROOT_URL}/bios`, bio).then(response => {
+      if (file) {
+        uploadImage(file, response.data._id);
+      }
       dispatch({
         type: ActionTypes.CREATE_BIO,
         payload: response.data,
       });
-      // browserHistory.push('/');
     }).catch(error => {
       // dispatch({
       //   type: ActionTypes.ERROR,
@@ -88,12 +106,18 @@ export function createBio(bio) {
   };
 }
 
-export function updateBio(bio, id) {
+export function updateBio(bio, file, id) {
   return (dispatch) => {
-    axios.put(`${ROOT_URL}/bios/${id}`, bio);
-    dispatch({
-      type: ActionTypes.UPDATE_BIO,
-      payload: bio,
+    axios.put(`${ROOT_URL}/bios/${id}`, bio).then((response) => {
+      if (file) {
+        uploadImage(file, response.data._id);
+      }
+      dispatch({
+        type: ActionTypes.UPDATE_BIO,
+        payload: bio,
+      });
+    }).catch(error => {
+      // catch the error
     });
   };
 }
