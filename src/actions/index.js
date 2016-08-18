@@ -122,7 +122,7 @@ export function updateBio(bio, file, id) {
   };
 }
 
-export function deletePost(id) {
+export function deleteBio(id) {
   return (dispatch) => {
     axios.delete(`${ROOT_URL}/bios/${id}`).then((response) => {
       dispatch({
@@ -134,6 +134,20 @@ export function deletePost(id) {
       // error
     });
   };
+}
+
+export function fetchLocs() {
+  return (dispatch) => {
+    axios.get(`${ROOT_URL}/locs`)
+    .then(response => {
+      dispatch({
+        type: ActionTypes.FETCH_LOCS,
+        payload: response.data,
+      });
+    }).catch(err => {
+      dispatch(reportError(`Retreiving locations faild: ${err.response.data}`))
+    });
+  }
 }
 
 export function signinUser(loginInfo) {
