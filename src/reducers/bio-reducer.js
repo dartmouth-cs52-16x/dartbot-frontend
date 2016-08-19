@@ -7,6 +7,7 @@ const BioReducer = (state = { all: [], bio: null }, action) => {
     case ActionTypes.FETCH_BIO:
       return { ...state, bio: action.payload };
     case ActionTypes.CREATE_BIO:
+      // console.log(action.payload);
       return { ...state, all: state.all.concat(action.payload) };
     case ActionTypes.UPDATE_BIO:
       return state;

@@ -22,8 +22,12 @@ export default function (ComposedComponent) {
       );
     }
   }
-  const mapStateToProps = (state) => ({
-    authenticated: state.admin.authenticated,
-  });
+
+  const mapStateToProps = (state) => {
+    return {
+      authenticated: state.admin.authenticated,
+    };
+  };
+
   return connect(mapStateToProps, null)(RequireAuth);
 }

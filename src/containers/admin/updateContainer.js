@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import { Link } from 'react-router';
-import { createBio, updateBio } from '../../actions';
+import { createBio, updateBio, fetchBios, deleteBio } from '../../actions';
 import CollapsibleBio from './adminComponents/collapsibleBio';
+import { browserHistory } from 'react-router';
 
 const emptyBio = {
   name: '',
@@ -12,20 +13,24 @@ const emptyBio = {
   image: '',
 };
 
-const UpdateContainer = (props) => {
-  const bioItems = props.bios.map((bio) => {
+class UpdateContainer extends Component {
+  componentDidMount() {
+    this.props.fetch();
+  }
+  render() {
+    const bioItems = this.props.bios.map((bio) => {
+      return (
+        <CollapsibleBio key={bio._id} update={this.props.update} delete={this.props.delete} bio={bio} />
+      );
+    });
     return (
-      <CollapsibleBio key={bio._id} update={props.update} bio={bio} />
+      <div className="bios">
+        <CollapsibleBio key={-1} update={null} create={this.props.create} delete={this.props.delete} bio={emptyBio} />
+        {bioItems}
+      </div>
     );
-  });
-
-  return (
-    <div className="bios">
-      <CollapsibleBio key={-1} update={null} create={props.create} bio={emptyBio} />
-      {bioItems}
-    </div>
-  );
-};
+  }
+}
 
 const mapStateToProps = (state) => ({
   bios: state.bios.all,
@@ -34,12 +39,16 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => {
   return {
     update: (bio, file, id) => {
-      console.log('update');
       dispatch(updateBio(bio, file, id));
     },
     create: (bio, file) => {
-      console.log('create');
       dispatch(createBio(bio, file));
+    },
+    fetch: () => {
+      dispatch(fetchBios());
+    },
+    delete: (id) => {
+      dispatch(deleteBio(id));
     },
   };
 };

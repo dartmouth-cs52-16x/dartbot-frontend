@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
 
-const ROOT_URL = 'http://dartmouthbot.herokuapp.com/api';
-// const ROOT_URL = 'http://localhost:9090/api';
+// const ROOT_URL = 'http://dartmouthbot.herokuapp.com/api';
+const ROOT_URL = 'http://localhost:9090/api';
 
 // const API_KEY = '?key=..'
 
@@ -11,6 +11,7 @@ export const ActionTypes = {
   FETCH_LOC: 'FETCH_LOC',
   FETCH_LOCS: 'FETCH_LOCS',
   FETCH_BIO: 'FETCH_BIO',
+  CREATE_BIO: 'CREATE_BIO',
   FETCH_BIOS: 'FETCH_BIOS',
   FETCH_DATA: 'FETCH_DATA',
   AUTH_USER: 'AUTH_USER',
@@ -53,9 +54,9 @@ export function fetchBios() {
       dispatch({
         type: ActionTypes.FETCH_BIOS,
         bios: response.data,
-      }).catch(error => {
-        reportError(error);
       });
+    }).catch(error => {
+      reportError(error);
     });
   });
 }
@@ -82,15 +83,19 @@ function uploadImage(file, id) {
         'Content-Type': file.type,
       },
     };
-    axios.put(signedUrl, file, options);
+    axios.put(signedUrl, file, options).then(() => {
+      console.log('Success uploading image');
+    }).catch(error => {
+      console.log(error);
+    });
   }).catch(error => {
-    // catch error here
+    console.log(error);
   });
 }
 
 export function createBio(bio, file) {
   return (dispatch) => {
-    axios.post(`${ROOT_URL}/bios`, bio).then(response => {
+    axios.post(`${ROOT_URL}/bios`, bio, { headers: { authorization: localStorage.getItem('token') } }).then(response => {
       if (file) {
         uploadImage(file, response.data._id);
       }
@@ -98,17 +103,16 @@ export function createBio(bio, file) {
         type: ActionTypes.CREATE_BIO,
         payload: response.data,
       });
+      browserHistory.push('/admin/bios');
     }).catch(error => {
-      // dispatch({
-      //   type: ActionTypes.ERROR,
-      // });
+      // console.log(error);
     });
   };
 }
 
 export function updateBio(bio, file, id) {
   return (dispatch) => {
-    axios.put(`${ROOT_URL}/bios/${id}`, bio).then((response) => {
+    axios.put(`${ROOT_URL}/bios/${id}`, bio, { headers: { authorization: localStorage.getItem('token') } }).then((response) => {
       if (file) {
         uploadImage(file, response.data._id);
       }
@@ -116,20 +120,21 @@ export function updateBio(bio, file, id) {
         type: ActionTypes.UPDATE_BIO,
         payload: bio,
       });
+      browserHistory.push('/admin/bios');
     }).catch(error => {
       // catch the error
     });
   };
 }
 
-export function deletePost(id) {
+export function deleteBio(id) {
   return (dispatch) => {
-    axios.delete(`${ROOT_URL}/bios/${id}`).then((response) => {
+    axios.delete(`${ROOT_URL}/bios/${id}`, { headers: { authorization: localStorage.getItem('token') } }).then((response) => {
       dispatch({
         type: ActionTypes.DELETE_BIO,
         payload: response.data,
       });
-      browserHistory.push('/');
+      browserHistory.push('/admin/bios');
     }).catch(error => {
       // error
     });

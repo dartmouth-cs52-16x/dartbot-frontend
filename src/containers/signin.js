@@ -37,8 +37,4 @@ class SignIn extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  authenticated: state.admin.authenticated,
-});
-
-export default connect(mapStateToProps, { signinUser })(SignIn);
+export default connect(null, { signinUser })(SignIn);
