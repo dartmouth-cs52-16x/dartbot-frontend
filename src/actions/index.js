@@ -141,6 +141,20 @@ export function deleteBio(id) {
   };
 }
 
+export function fetchLocs() {
+  return (dispatch) => {
+    axios.get(`${ROOT_URL}/locs`)
+    .then(response => {
+      dispatch({
+        type: ActionTypes.FETCH_LOCS,
+        payload: response.data,
+      });
+    }).catch(err => {
+      dispatch(reportError(`Retreiving locations faild: ${err.response.data}`))
+    });
+  }
+}
+
 export function signinUser(loginInfo) {
   return (dispatch) => {
     axios.post(`${ROOT_URL}/signin`, loginInfo)
