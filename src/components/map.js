@@ -2,28 +2,26 @@ import React, { Component } from 'react';
 import GoogleMap from 'google-map-react';
 import Pin from './pin.js';
 import { fetchLocs } from '../actions';
+import { connect } from 'react-redux';
 
 class Map extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-
-    }
-    this.renderPins = this.renderPins.bind(this);
-  }
-
   static defaultProps = {
     center: { lat: 43.70357989999999, lng: -72.28878229999998 },
     zoom: 17,
   };
 
+  constructor(props) {
+    super(props);
+
+    this.renderPins = this.renderPins.bind(this);
+  }
   componentWillMount() {
     this.props.fetchLocs();
   }
 
-  renderPins(){
+  renderPins() {
     this.props.locs.map(loc => {
-      return <Pin lat={loc.gps.lat} lng={loc.gps.long} text={loc.title} content={loc.content} >
+      return <Pin lat={loc.gps.lat} lng={loc.gps.long} text={loc.title} content={loc.content} />;
     });
   }
 
@@ -46,8 +44,8 @@ class Map extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) => ({
   locs: state.locs.all,
-}
+});
 
 export default connect(mapStateToProps, { fetchLocs })(Map);

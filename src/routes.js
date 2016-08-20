@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
 import App from './components/app';
-import Map from './containers/map';
+import Map from './components/map';
 import BioContainer from './containers/profiles/bioContainer';
 import AdminContainer from './containers/admin/adminContainer';
 import Bot from './components/bot';

@@ -2,7 +2,7 @@ $buttonColor: lighten(blue, 30%);
 body {
   font-family: "Roboto", sans-serif;
   color: rgb(10%, 10%, 10%);
-  background: darken(white, 10%);
+  background: darken(white, 3%);
   margin: 50px 50px 0px 50px;
 }
 iframe {
@@ -184,7 +184,7 @@ iframe {
 
 /**-----------admin page ----------------**/
 button.accordion {
-    background-color: #eee;
+    background: darken(white, 5%);
     color: #444;
     cursor: pointer;
     padding: 18px;
@@ -223,4 +223,8 @@ div.panel {
 div.panel.show {
     opacity: 1;
     max-height: 500px; /* Whatever you like, as long as its more than the height of the content (on all screen sizes) */
+}
+
+.collapsible-bio{
+  width: 80%,
 }
