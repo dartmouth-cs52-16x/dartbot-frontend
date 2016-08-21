@@ -13,8 +13,7 @@ const BioContainer = (props) => {
   props.fetchBios();
 
   return (
-    <div className="bios">
-      <h1> Tour Guide Profiles</h1>
+    <div className="bios-user">
       {bioItems}
     </div>
   );

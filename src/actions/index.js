@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
 
- const ROOT_URL = 'http://dartmouthbot.herokuapp.com/api';
-//const ROOT_URL = 'http://localhost:9090/api';
+// const ROOT_URL = 'http://dartmouthbot.herokuapp.com/api';
+const ROOT_URL = 'http://localhost:9090/api';
 
 // const API_KEY = '?key=..'
 
@@ -150,9 +150,9 @@ export function fetchLocs() {
         payload: response.data,
       });
     }).catch(err => {
-      dispatch(reportError(`Retreiving locations faild: ${err.response.data}`))
+      dispatch(reportError(`Retreiving locations faild: ${err.response.data}`));
     });
-  }
+  };
 }
 
 export function signinUser(loginInfo) {
