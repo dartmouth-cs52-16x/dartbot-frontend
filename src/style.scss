@@ -1,5 +1,5 @@
 
-@import url(https://fonts.googleapis.com/css?family=Lato:300,700|Montserrat|Open+Sans|Open+Sans+Condensed:300|Raleway:500,600|Roboto|Source+Sans+Pro);
+@import url(https://fonts.googleapis.com/css?family=Lato:300,700|Montserrat|Open+Sans|Open+Sans+Condensed:300|Raleway:100,200,500,600|Roboto|Source+Sans+Pro);
 $buttonColor: lighten(blue, 30%);
 body {
   font-family: "Roboto", sans-serif;
@@ -348,22 +348,28 @@ div.panel.show {
 .bio-item {
   width: 550px;
   background:#fff;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .bio-item  {
+  box-shadow: 2px 2px 13px #303030;
   .image img {
     max-width:100%;
-    border-radius: 8px 8px 0 0;
-    box-shadow: 3px 3px 13px #303030;
+    border-radius: 6px 6px 0 0;
   }
   .name {
     padding-top: 18px;
     text-transform:uppercase;
     font-size: 20px;
-    letter-spacing: 2px;
+    letter-spacing: 1.75px;
     font-family:'Raleway', sans-serif;
     font-weight:600;
+  }
+  .major {
+    margin: -8px 0 30px 0;
+    font-family: "Raleway", sans-serif;
+    font-weight: 200;
+    text-transform:uppercase;
   }
   .content {
     font-family: 'Raleway', sans-serif;

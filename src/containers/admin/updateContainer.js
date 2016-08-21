@@ -15,7 +15,11 @@ const emptyBio = {
 
 class UpdateContainer extends Component {
   componentDidMount() {
-    this.props.fetch();
+    this.props.fetch(this);
+    console.log('mounting');
+  }
+  componentWillReceieveProps() {
+    this.setState({});
   }
   render() {
     const bioItems = this.props.bios.map((bio) => {

@@ -11,7 +11,6 @@ class CollapsibleBio extends Component {
     this.handleImage = this.handleImage.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
   }
-
   handleOpenClose(e) {
     e.target.classList.toggle('active');
     e.target.nextElementSibling.classList.toggle('show');
