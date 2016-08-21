@@ -4,7 +4,7 @@ class CollapsibleBio extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { };
+    this.state = { bio: { name: '', major: '', year: '', content: '' }, error: false, file: null };
     this.handleEdit = this.handleEdit.bind(this);
     this.handleSave = this.handleSave.bind(this);
     this.handleOpenClose = this.handleOpenClose.bind(this);
@@ -45,10 +45,15 @@ class CollapsibleBio extends Component {
       else result[key] = this.props.bio[key];
     }
 
-    if (this.props.update) { // create a new bio
-      this.props.update(result, this.state.file, this.props.bio._id);
-    } else {  // update the bio
-      this.props.create(result, this.state.file);
+    if (this.props.update) { // update bio
+      this.props.update(result, this.state.file);
+    } else {  // create new bio
+      if (!this.state.bio.name || !this.state.bio.major || !this.state.bio.year || !this.state.bio.content) {
+        this.setState({ error: true });
+      } else {
+        this.props.create(result, this.state.file);
+        this.setState({ error: false });
+      }
       return;
     }
   }
@@ -57,16 +62,28 @@ class CollapsibleBio extends Component {
   }
   render() {
     const header = this.props.bio.name ? this.props.bio.name : 'New';
+    const error = this.state.error ? 'Fill out all fields before submitting!' : '';
+    const imgURL = this.props.bio.image ? this.props.bio.image : 'http://www.patriotenergygroup.com/images2/tba.png';
     return (
-      <div className="collapsbile-bio">
+      <div className="collapsible-bio">
         <button className="accordion" onClick={this.handleOpenClose}>{header}</button>
         <div className="panel">
-          <div> <input type="file" id="file-input" onChange={this.handleImage} /> </div>
-          <div> Name: <input type="text" onChange={this.handleEdit('name')} defaultValue={this.props.bio.name} /> </div>
-          <div> Year: <input type="text" onChange={this.handleEdit('year')} defaultValue={this.props.bio.year} /> </div>
-          <div> Major: <input type="text" onChange={this.handleEdit('major')} defaultValue={this.props.bio.major} /> </div>
-          <div> Content: <input type="text" onChange={this.handleEdit('content')} defaultValue={this.props.bio.content} /> </div>
-          <div> <button onClick={this.handleSave}>Save</button> <button onClick={this.handleDelete}> Delete </button> </div>
+          <div className="container">
+            <div className="column-form image-column">
+              <div> <img role="presentation" src={imgURL} /> </div>
+              <div> <label> Upload</label> <input type="file" name="Upload" id="file-input" onChange={this.handleImage} /> </div>
+            </div>
+            <div className="column-form bigger">
+              <div> <label> Name: </label> <input type="text" onChange={this.handleEdit('name')} defaultValue={this.props.bio.name} /> </div>
+              <div> <label> Year: </label> <input type="text" onChange={this.handleEdit('year')} defaultValue={this.props.bio.year} /> </div>
+              <div> <label> Major: </label> <input type="text" onChange={this.handleEdit('major')} defaultValue={this.props.bio.major} /> </div>
+            </div>
+            <div className="column-form bigger">
+              <div> <label> Content: </label> <input type="text" onChange={this.handleEdit('content')} defaultValue={this.props.bio.content} /> </div>
+            </div>
+          </div>
+          <div className="error"> {error}</div>
+          <div> <button className="save"onClick={this.handleSave}>Save</button> <button className="save delete"onClick={this.handleDelete}> Delete </button> </div>
         </div>
       </div>
     );

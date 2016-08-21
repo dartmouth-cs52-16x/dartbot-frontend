@@ -38,8 +38,9 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    update: (bio, file, id) => {
-      dispatch(updateBio(bio, file, id));
+    update: (bio, file) => {
+      console.log(bio);
+      dispatch(updateBio(bio, file, bio._id));
     },
     create: (bio, file) => {
       dispatch(createBio(bio, file));

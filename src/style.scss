@@ -1,3 +1,5 @@
+
+@import url(https://fonts.googleapis.com/css?family=Lato|Montserrat|Open+Sans|Open+Sans+Condensed:300|Raleway|Roboto|Source+Sans+Pro);
 $buttonColor: lighten(blue, 30%);
 body {
   font-family: "Roboto", sans-serif;
@@ -184,7 +186,7 @@ iframe {
 
 /**-----------admin page ----------------**/
 button.accordion {
-    background: darken(white, 5%);
+    background: #fff;
     color: #444;
     cursor: pointer;
     padding: 18px;
@@ -194,6 +196,9 @@ button.accordion {
     outline: none;
     font-size: 15px;
     transition: 0.4s;
+    font-weight: 300;
+    font-family: "Helvetica", sans-serif;
+    margin-top:.5%;
 }
 
 button.accordion.active, button.accordion:hover {
@@ -212,19 +217,105 @@ button.accordion.active:after {
 }
 
 div.panel {
-    padding: 0 18px;
     background-color: white;
     max-height: 0;
     overflow: hidden;
     transition: 0.6s ease-in-out;
     opacity: 0;
+    .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      margin-bottom: 30px;
+    }
+    .column-form {
+      display:flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .bigger{
+      // flex-grow: 2;
+    }
+    .error {
+      font-family: "Raleway", sans-serif;
+      font-size:12px;
+    margin-bottom: 6px;
+    }
 }
 
 div.panel.show {
+    padding: 25px;
     opacity: 1;
     max-height: 500px; /* Whatever you like, as long as its more than the height of the content (on all screen sizes) */
 }
 
+.bios {
+  text-align:center;
+}
+
 .collapsible-bio{
-  width: 80%,
+  width: 78%;
+  margin: 0 auto;
+  .save{
+    text-align: center;
+    border:none;
+    text-decoration: none;
+    background: #fff;
+    text-transform:uppercase;
+    font-family: "Montserrat", sans-serif;
+    font-size: 11.8px;
+    cursor: pointer;
+    // color:#fff;
+    .delete{
+
+    }
+  }
+}
+
+/**---Image column----**/
+.image-column{
+  img {
+    max-width:150px;
+  }
+  text-align: center;
+  position:relative;
+}
+
+.collapsible-bio input[type="file"] {
+  width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+  left: 52%; 
+}
+
+/**--------------input form ------------**/
+.collapsible-bio input[type="text"] {
+  font-family: "Open Sans", sans-serif;
+  box-shadow: none;
+  padding: 10px;
+  padding-bottom: 4px;
+  margin-bottom: 5px;
+  border: none;
+  border-bottom: solid 2px #c9c9c9;
+  transition: border 0.3s;
+  width: 200px;
+  columns: 80;
+
+}
+.collapsible-bio input[type="text"]:focus,
+.collapsible-bio input[type="text"].focus {
+  border-bottom: solid 2.6px #969696;
+  outline: none;
+}
+
+.collapsible-bio label {
+  font-family: "Raleway", sans-serif;
+  font-size: 13.5px;
+  display: inline-block;
+  min-width:50px;
+  text-align:right;
+  padding-right: 3px;
 }
