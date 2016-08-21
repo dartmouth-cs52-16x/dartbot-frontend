@@ -7,6 +7,7 @@ import routes from './routes';
 import thunk from 'redux-thunk';
 import './style.scss';
 import Reducer from './reducers/index';
+import { ActionTypes } from './actions';
 
 const store = createStore(Reducer, compose(
   applyMiddleware(thunk),

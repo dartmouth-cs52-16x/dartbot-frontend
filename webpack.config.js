@@ -21,8 +21,15 @@ module.exports = {
       test: /\.scss/,
       loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader!postcss-loader'),
     },
-      // You could also use other loaders the same way. I. e. the autoprefixer-loader
-    ],
+    // Image URL config. Generate data URI's for images smaller than 10,000 bytes
+    { test: /\.(png|gif|jpe?g|svg)$/i, loader: 'url?limit=10000' },
+
+    // Image file config. Generate hashed file names to make them easy to cache.
+    {
+      test: /\.(png|gif|jpe?g|svg)$/i,
+      loader: 'file?hash=sha512&digest=hex&name=[path][name]-[hash].[ext]',
+    },
+  ],
   },
   postcss: [autoprefixer({ browsers: ['last 2 versions'] })],
   plugins: [

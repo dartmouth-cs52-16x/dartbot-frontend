@@ -1,5 +1,5 @@
 
-@import url(https://fonts.googleapis.com/css?family=Lato|Montserrat|Open+Sans|Open+Sans+Condensed:300|Raleway|Roboto|Source+Sans+Pro);
+@import url(https://fonts.googleapis.com/css?family=Lato:300,700|Montserrat|Open+Sans|Open+Sans+Condensed:300|Raleway:100,200,500,600|Roboto|Source+Sans+Pro);
 $buttonColor: lighten(blue, 30%);
 body {
   font-family: "Roboto", sans-serif;
@@ -278,7 +278,6 @@ div.panel.show {
     }
   }
 }
-
 /**---Image column----**/
 .image-column{
   img {
@@ -297,7 +296,6 @@ div.panel.show {
 	z-index: -1;
   left: 52%;
 }
-
 /**--------------input form ------------**/
 .collapsible-bio input[type="text"] {
   font-family: "Open Sans", sans-serif;
@@ -325,4 +323,79 @@ div.panel.show {
   min-width:50px;
   text-align:right;
   padding-right: 3px;
+}
+
+/**---Image column----**/
+.image-column{
+  img {
+    max-width:150px;
+  }
+  label {
+    font-family: "Montserrat";
+    text-transform:uppercase;
+    font-size: 11.8px;
+    :hover {
+      font-size: 13px;
+    }
+  }
+  text-align: center;
+  position:relative;
+}
+
+.collapsible-bio input[type="file"] {
+  width: 53px;
+  height: 16px;
+  opacity: 0;
+  position: absolute;
+  left: 34%;
+}
+
+
+/**-------Bios--------**/
+.bios-user{
+  background-image: url('~/bundle/../imgs/green2blur.jpg');
+  background-size: cover;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  margin: 0 -10%;
+  padding: 3% 15%;
+}
+
+.bio-item {
+  width: 550px;
+  background:#fff;
+  border-radius: 6px;
+}
+
+.bio-item  {
+  box-shadow: 2px 2px 13px #303030;
+  .image img {
+    max-width:100%;
+    border-radius: 6px 6px 0 0;
+  }
+  .name {
+    padding-top: 18px;
+    text-transform:uppercase;
+    font-size: 20px;
+    letter-spacing: 1.75px;
+    font-family:'Raleway', sans-serif;
+    font-weight:600;
+  }
+  .major {
+    margin: -8px 0 30px 0;
+    font-family: "Raleway", sans-serif;
+    font-weight: 200;
+    text-transform:uppercase;
+  }
+  .content {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: .9em;
+    letter-spacing: .8px;
+    padding: 0 5%;
+    color: #303030;
+  }
 }

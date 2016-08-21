@@ -11,7 +11,6 @@ class CollapsibleBio extends Component {
     this.handleImage = this.handleImage.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
   }
-
   handleOpenClose(e) {
     e.target.classList.toggle('active');
     e.target.nextElementSibling.classList.toggle('show');
@@ -71,7 +70,7 @@ class CollapsibleBio extends Component {
           <div className="container">
             <div className="column-form image-column">
               <div> <img role="presentation" src={imgURL} /> </div>
-              <div> <label> Upload</label> <input type="file" name="Upload" id="file-input" onChange={this.handleImage} /> </div>
+              <div> <label> Upload </label> <input type="file" name="Upload" id="file-input" onChange={this.handleImage} /> </div>
             </div>
             <div className="column-form bigger">
               <div> <label> Name: </label> <input type="text" onChange={this.handleEdit('name')} defaultValue={this.props.bio.name} /> </div>
