@@ -10,12 +10,12 @@ class NavBar extends React.Component {
 
   render() {
     return (
-      <div id="navbarContainer">
-        <Link id="homeLink" to="/">DartBot</Link>
-        <div id="pageLinks">
+      <div className="navbarContainer">
+        <Link className="homeLink" to="/">DartBot</Link>
+        <div className="pageLinks">
           <Link id="bioLink" to="profiles">Bio</Link>
           <Link id="botLink" to="bot">Bot</Link>
-          <Link id="adminLink" to="admin">Admin</Link>
+          <Link id="adminLink" to="/admin">Admin</Link>
         </div>
       </div>
     );

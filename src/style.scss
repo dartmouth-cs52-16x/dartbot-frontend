@@ -13,7 +13,7 @@ iframe {
   margin: 20px;
 }
 /* Styles for the NavBar */
-#navbarContainer {
+.navbarContainer {
   background-color: #ffffff;
   color: #454343;
   height: 40px;
@@ -28,12 +28,24 @@ iframe {
   z-index: 999;
   border-bottom: 2px solid #3498db;
 }
-#pageLinks {
+.pageLinks {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  a {
+    text-decoration: none;
+    padding-right: 20px;
+    opacity: .6;
+    transition: all 0.5s ease;
+    font-weight: 300;
+    font-family: "Helvetica", sans-serif;
+  }
+  a:hover {
+    text-decoration: underline;
+    opacity: 1;
+  }
 }
-#homeLink {
+.homeLink {
   text-decoration: none;
   padding-left: 5vw;
   color: black;
@@ -42,7 +54,7 @@ iframe {
   font-weight: 300;
   font-family: "Helvetica", sans-serif;
 }
-#homeLink:hover {
+.homeLink:hover {
   text-decoration: underline;
   opacity: 1;
 }
@@ -123,16 +135,6 @@ iframe {
   justify-content: center;
   h1 {
     margin: auto;
-  }
-}
-
-#adminNav {
-  display: flex;
-  flex-flow: row;
-  margin: auto;
-  padding: 2rem;
-  a {
-    margin: 5px;
   }
 }
 
@@ -293,7 +295,7 @@ div.panel.show {
 	overflow: hidden;
 	position: absolute;
 	z-index: -1;
-  left: 52%; 
+  left: 52%;
 }
 
 /**--------------input form ------------**/
