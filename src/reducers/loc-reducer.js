@@ -6,6 +6,8 @@ const LocReducer = (state = { all: [], loc: '' }, action) => {
       return ({ ...state, all: action.payload });
     case ActionTypes.FETCH_LOC:
       return ({ ...state, loc: action.payload });
+    case ActionTypes.CREATE_LOC:
+      return ({ ...state, all: state.add.concat(action.payload) });
     default:
       return state;
   }

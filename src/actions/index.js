@@ -8,17 +8,26 @@ const ROOT_URL = 'http://dartmouthbot.herokuapp.com/api';
 
 // keys for actiontypes
 export const ActionTypes = {
-  FETCH_LOC: 'FETCH_LOC',
-  FETCH_LOCS: 'FETCH_LOCS',
+  SET_ERROR: 'SET_ERROR',
+  UNSET_ERROR: 'UNSET_ERROR',
   FETCH_BIO: 'FETCH_BIO',
   CREATE_BIO: 'CREATE_BIO',
   FETCH_BIOS: 'FETCH_BIOS',
-  FETCH_DATA: 'FETCH_DATA',
+  UPDATE_BIO: 'UPDATE_BIO',
+  DELETE_BIO: 'DELETE_BIO',
+  FETCH_LOC: 'FETCH_LOC',
+  FETCH_LOCS: 'FETCH_LOCS',
+  CREATE_LOC: 'CREATE_LOC',
+  UPDATE_LOC: 'UPDATE_LOC',
+  DELETE_LOC: 'DELETE_LOC',
+  FETCH_INTENT_DATA: 'FETCH_INTENT_DATA',
+  FETCH_LOC_DATA: 'FETCH_LOC_DATA',
+  FETCH_SURVEY_DATA: 'FETCH_SURVEY_DATA',
   AUTH_USER: 'AUTH_USER',
   DEAUTH_USER: 'DEAUTH_USER',
-  SET_ERROR: 'SET_ERROR',
-  UNSET_ERROR: 'UNSET_ERROR',
 };
+
+// Error actions
 
 function reportError(error) {
   return ({
@@ -33,19 +42,7 @@ export function removeError() {
   });
 }
 
-export function fetchData() {
-  return (dispatch => {
-    axios.get(`${ROOT_URL}/data`)
-    .then(response => {
-      dispatch({
-        type: ActionTypes.FETCH_DATA,
-        data: response.data,
-      });
-    }).catch(error => {
-      console.log(error);
-    });
-  });
-}
+// Tour Guide Bios actions
 
 export function fetchBios() {
   return (dispatch => {
@@ -141,6 +138,8 @@ export function deleteBio(id) {
   };
 }
 
+// Location Actions
+
 export function fetchLocs() {
   return (dispatch) => {
     axios.get(`${ROOT_URL}/locs`)
@@ -150,10 +149,106 @@ export function fetchLocs() {
         payload: response.data,
       });
     }).catch(err => {
+      dispatch(reportError(`Retreiving locations failed: ${err.response.data}`));
+    });
+  };
+}
+
+export function fetchLoc(id) {
+  return (dispatch) => {
+    axios.get(`${ROOT_URL}/locs/${id}`)
+    .then(response => {
+      dispatch({
+        type: ActionTypes.FETCH_LOC,
+        payload: response.data,
+      });
+    }).catch(err => {
       dispatch(reportError(`Retreiving locations faild: ${err.response.data}`));
     });
   };
 }
+
+export function createLoc(loc) {
+  return (dispatch) => {
+    axios.post(`${ROOT_URL}/locs`)
+    .then(response => {
+      dispatch({
+        type: ActionTypes.CREATE_LOC,
+        payload: response.data,
+      });
+    }).catch(error => {
+      dispatch(reportError(`Creating location failed: ${error.response.data}`));
+    });
+  };
+}
+
+export function updateLoc(loc, id) {
+  return (dispatch) => {
+    axios.put(`${ROOT_URL}/locs/${id}`)
+    .then(response => {
+      dispatch(fetchLocs());
+    }).catch(error => {
+      dispatch(reportError(`Updating location failed: ${error.response.data}`));
+    });
+  };
+}
+
+export function deleteLoc(id) {
+  return (dispatch) => {
+    axios.delete(`${ROOT_URL}/locs/${id}`)
+    .then(response => {
+      dispatch(fetchLocs());
+    }).catch(error => {
+      dispatch(reportError(`Deleting loction failed: ${error.response.data}`));
+    });
+  };
+}
+
+// Analytics actions
+
+export function fetchIntentData() {
+  return (dispatch) => {
+    axios.get(`${ROOT_URL}/intent/data`)
+    .then(response => {
+      dispatch({
+        type: ActionTypes.FETCH_INTENT_DATA,
+        payload: response.data,
+      });
+    }).catch(error => {
+      dispatch(reportError(`Fetching intent data failed: ${error.response.data}`));
+    });
+  };
+}
+
+export function fetchLocData() {
+  return (dispatch) => {
+    axios.get(`${ROOT_URL}/locs/data`)
+    .then(response => {
+      dispatch({
+        type: ActionTypes.FETCH_LOC_DATA,
+        payload: response.data,
+      });
+    }).catch(error => {
+      dispatch(reportError(`Fetching loc data failed: ${error.response.data}`));
+    });
+  };
+}
+
+export function fetchSurveyData() {
+  return (dispatch) => {
+    axios.get(`${ROOT_URL}/survey/data`)
+    .then(response => {
+      dispatch({
+        type: ActionTypes.FETCH_SURVEY_DATA,
+        payload: response.data,
+      });
+    }).catch(error => {
+      dispatch(reportError(`Fetching survey data failed: ${error.response.data}`));
+    });
+  };
+}
+
+// Signing In and Signing Out actions
 
 export function signinUser(loginInfo) {
   return (dispatch) => {

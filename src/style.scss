@@ -1,11 +1,13 @@
 
 @import url(https://fonts.googleapis.com/css?family=Lato:300,700|Montserrat|Open+Sans|Open+Sans+Condensed:300|Raleway:100,200,500,600|Roboto|Source+Sans+Pro);
-$buttonColor: lighten(blue, 30%);
+$buttonColor: lighten(green, 50%);
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Helvetica", sans-serif;
   color: rgb(10%, 10%, 10%);
   background: darken(white, 3%);
   margin: 50px 50px 0px 50px;
+  background-image: url('~/bundle/../imgs/green2blur.jpg');
+  background-size: cover;
 }
 iframe {
   margin: auto;
@@ -133,6 +135,7 @@ iframe {
   display: flex;
   flex-flow: column;
   justify-content: center;
+  padding: 0;
   h1 {
     margin: auto;
   }
@@ -161,7 +164,6 @@ iframe {
     margin: auto;
     margin-top: 3px;
     border-radius: 5px;
-    font-family: "Reem Kufi", sans-serif;
     border: 1px solid transparentize(black, .75);;
     background-color: $buttonColor;
   }
@@ -353,10 +355,8 @@ div.panel.show {
 
 /**-------Bios--------**/
 .bios-user{
-  background-image: url('~/bundle/../imgs/green2blur.jpg');
-  background-size: cover;
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column;
   align-items: center;
   justify-content: space-around;
   text-align: center;
