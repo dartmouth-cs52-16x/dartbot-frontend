@@ -365,6 +365,7 @@ div.panel.show {
   margin: 0 -10%;
   padding: 3% 15%;
   background-image: url('~/bundle/../imgs/green2blur.jpg');
+  background-repeat:none; 
   background-size: cover;
 
 }
@@ -380,7 +381,7 @@ div.panel.show {
   box-shadow: 2px 2px 13px #303030;
   .image img {
     border-radius: 6px 6px 0 0;
-    width: 400px; 
+    width: 400px;
     height: 325px;
     object-fit: cover;
   }
@@ -410,4 +411,23 @@ div.panel.show {
       word-wrap: break-word;
     }
   }
+}
+
+.footer {
+  margin: 15px 0;
+  a {
+    text-decoration: none;
+    color: #000;
+    margin: 0 18px;
+  }
+  .fa-facebook-square {
+    color: #3b5998;
+  }
+  .fa-twitter {
+    color:#00aced;
+  }
+  font-size: 1.3em;
+  display:flex;
+  flex-direction:row;
+  justify-content: center;
 }

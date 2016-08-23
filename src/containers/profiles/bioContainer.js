@@ -13,8 +13,15 @@ const BioContainer = (props) => {
   props.fetchBios();
 
   return (
-    <div className="bios-user">
-      {bioItems}
+    <div>
+      <div className="bios-user">
+        {bioItems}
+      </div>
+      <div className="footer">
+        <a href="#"> <i className="fa fa-facebook-square fa-2x" ></i> </a>
+        <a href="#"> <i className="fa fa-twitter fa-2x"></i> </a>
+        <a href="#"> <i className="fa fa-envelope fa-2x"></i> </a>
+      </div>
     </div>
   );
 };
