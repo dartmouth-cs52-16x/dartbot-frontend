@@ -3,5 +3,3 @@
    - "5.4"
 deploy:
     provider: surge
-    project: .
-    domain: cs52-dartbot.surge.sh
