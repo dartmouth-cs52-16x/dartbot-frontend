@@ -1,5 +1,7 @@
  language: node_js
  node_js:
    - "5.4"
-after_success:
-  - surge --project . --domain cs52-dartbot.surge.sh
+deploy:
+    provider: surge
+    project: .
+    domain: cs52-dartbot.surge.sh
