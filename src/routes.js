@@ -18,7 +18,7 @@ export default(
   <Route path="/" component={App}>
     <IndexRoute component={Map} />
     <Route path="profiles" component={BioContainer} />
-    <Route path="admin" component={AdminContainer}>
+    <Route path="admin" component={RequireAuth(AdminContainer)}>
       <Route path="analytics" component={Analytics} />
       <Route path="newbio" component={NewBio} />
       <Route path="bios" component={UpdateContainer} />

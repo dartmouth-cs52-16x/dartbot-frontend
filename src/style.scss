@@ -1,5 +1,5 @@
 
-@import url(https://fonts.googleapis.com/css?family=Lato:300,700|Montserrat|Open+Sans|Open+Sans+Condensed:300|Raleway:100,200,500,600|Roboto|Source+Sans+Pro);
+@import url(https://fonts.googleapis.com/css?family=Lato:300,700|Montserrat|Open+Sans:400,600|Open+Sans+Condensed:300|Raleway:100,200,500,600|Roboto|Source+Sans+Pro);
 $buttonColor: lighten(blue, 30%);
 body {
   font-family: "Roboto", sans-serif;
@@ -231,7 +231,8 @@ div.panel {
       display: flex;
       flex-direction: row;
       justify-content: space-around;
-      margin-bottom: 30px;
+      align-items:center;
+      margin: 15px 0;
     }
     .column-form {
       display:flex;
@@ -278,32 +279,37 @@ div.panel.show {
 }
 
 /**--------------input form ------------**/
-.collapsible-bio input[type="text"] {
-  font-family: "Open Sans", sans-serif;
-  box-shadow: none;
-  padding: 10px;
-  padding-bottom: 4px;
-  margin-bottom: 5px;
-  border: none;
-  border-bottom: solid 2px #c9c9c9;
-  transition: border 0.3s;
-  width: 200px;
-  columns: 80;
-
-}
-.collapsible-bio input[type="text"]:focus,
-.collapsible-bio input[type="text"].focus {
-  border-bottom: solid 2.6px #969696;
-  outline: none;
-}
-
-.collapsible-bio label {
+.collapsible-bio {
   font-family: "Raleway", sans-serif;
   font-size: 13.5px;
   display: inline-block;
   min-width:50px;
   text-align:right;
   padding-right: 3px;
+  .input {
+    margin: 15px 0;
+  }
+}
+
+.collapsible-bio textarea {
+  font-family: "Open Sans", sans-serif;
+  box-shadow: none;
+  padding: 0px 0px 2.3px 5px;
+  margin-bottom: -2px;
+  border: none;
+  border-bottom: solid 2px #c9c9c9;
+  transition: border 0.3s;
+  width: 230px;
+  rows: 4;
+  -moz-columns: 63;
+  columns: 80;
+  resize: none;
+  height: 16px;
+}
+.collapsible-bio textarea:focus,
+.collapsible-bio textarea.focus {
+  border-bottom: solid 2.6px #969696;
+  outline: none;
 }
 
 /**---Image column----**/
@@ -346,7 +352,7 @@ div.panel.show {
 }
 
 .bio-item {
-  width: 550px;
+  width: 400px;
   background:#fff;
   border-radius: 6px;
 }
@@ -364,19 +370,23 @@ div.panel.show {
     letter-spacing: 1.75px;
     font-family:'Raleway', sans-serif;
     font-weight:600;
+    word-wrap: break-word;
   }
   .major {
     margin: -8px 0 30px 0;
     font-family: "Raleway", sans-serif;
     font-weight: 200;
     text-transform:uppercase;
+    word-wrap: break-word;
   }
   .content {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 600;
-    font-size: .9em;
-    letter-spacing: .8px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: .84em;
     padding: 0 5%;
-    color: #303030;
+    color: #383838;
+    p {
+      word-wrap: break-word;
+    }
   }
 }

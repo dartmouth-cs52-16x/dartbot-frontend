@@ -73,12 +73,12 @@ class CollapsibleBio extends Component {
               <div> <label> Upload </label> <input type="file" name="Upload" id="file-input" onChange={this.handleImage} /> </div>
             </div>
             <div className="column-form bigger">
-              <div> <label> Name: </label> <input type="text" onChange={this.handleEdit('name')} defaultValue={this.props.bio.name} /> </div>
-              <div> <label> Year: </label> <input type="text" onChange={this.handleEdit('year')} defaultValue={this.props.bio.year} /> </div>
-              <div> <label> Major: </label> <input type="text" onChange={this.handleEdit('major')} defaultValue={this.props.bio.major} /> </div>
+              <div className="input"> Name: <textarea onChange={this.handleEdit('name')} defaultValue={this.props.bio.name} /> </div>
+              <div className="input"> Year: <textarea onChange={this.handleEdit('year')} defaultValue={this.props.bio.year} /> </div>
+              <div className="input"> Major: <textarea onChange={this.handleEdit('major')} defaultValue={this.props.bio.major} /> </div>
             </div>
             <div className="column-form bigger">
-              <div> <label> Content: </label> <input type="text" onChange={this.handleEdit('content')} defaultValue={this.props.bio.content} /> </div>
+              <div> <label> Content: </label> <textarea onChange={this.handleEdit('content')} defaultValue={this.props.bio.content} /> </div>
             </div>
           </div>
           <div className="error"> {error}</div>

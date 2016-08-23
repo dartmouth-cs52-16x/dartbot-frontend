@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
 
-// const ROOT_URL = 'http://dartmouthbot.herokuapp.com/api';
-const ROOT_URL = 'http://localhost:9090/api';
+const ROOT_URL = 'http://dartmouthbot.herokuapp.com/api';
+// const ROOT_URL = 'http://localhost:9090/api';
 
 // const API_KEY = '?key=..'
 
@@ -18,6 +18,8 @@ export const ActionTypes = {
   DEAUTH_USER: 'DEAUTH_USER',
   SET_ERROR: 'SET_ERROR',
   UNSET_ERROR: 'UNSET_ERROR',
+  DELETE_BIO: 'DELETE_BIO',
+  UPDATE_BIO: 'UPDATE_BIO',
 };
 
 function reportError(error) {
@@ -103,7 +105,6 @@ export function createBio(bio, file) {
         type: ActionTypes.CREATE_BIO,
         payload: response.data,
       });
-      browserHistory.push('/admin/bios');
     }).catch(error => {
       // console.log(error);
     });
@@ -130,9 +131,10 @@ export function updateBio(bio, file, id) {
 export function deleteBio(id) {
   return (dispatch) => {
     axios.delete(`${ROOT_URL}/bios/${id}`, { headers: { authorization: localStorage.getItem('token') } }).then((response) => {
+      console.log(response);
       dispatch({
         type: ActionTypes.DELETE_BIO,
-        payload: response.data,
+        bio: response.data,
       });
       browserHistory.push('/admin/bios');
     }).catch(error => {
