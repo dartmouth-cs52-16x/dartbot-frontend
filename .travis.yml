@@ -2,4 +2,4 @@
  node_js:
    - "5.4"
 after_success:
-  - surge --project node_modules/.bin/webpack --domain cs52-dartbot.surge.sh
+  - surge --project ./src --domain cs52-dartbot.surge.sh
