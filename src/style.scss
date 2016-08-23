@@ -210,10 +210,11 @@ iframe {
    }
  }
 
- .newLocMap {
+.newLocMap {
    height: 300px;
    width: 40vw;
    margin: 10px;
+ }
 .analytics{
    padding-top: 40px;
    font-weight: lighter;
@@ -309,6 +310,7 @@ iframe {
    justify-content: center;
    button {
      margin: 5px;
+   }
   .graph {
     margin: 20px;
   }
@@ -517,7 +519,7 @@ div.panel.show {
   justify-content: space-around;
   text-align: center;
   margin: 0 -10%;
-  padding: 3% 15%;g
+  padding: 3% 15%;
 }
 
 .bio-item {
