@@ -20,6 +20,7 @@ export const ActionTypes = {
   CREATE_LOC: 'CREATE_LOC',
   UPDATE_LOC: 'UPDATE_LOC',
   DELETE_LOC: 'DELETE_LOC',
+  CREATE_SURVEY: 'CREATE_SURVEY',
   FETCH_INTENT_DATA: 'FETCH_INTENT_DATA',
   FETCH_LOC_DATA: 'FETCH_LOC_DATA',
   FETCH_SURVEY_DATA: 'FETCH_SURVEY_DATA',
@@ -29,7 +30,7 @@ export const ActionTypes = {
 
 // Error actions
 
-function reportError(error) {
+export function reportError(error) {
   return ({
     type: ActionTypes.SET_ERROR,
     message: error,
@@ -201,6 +202,17 @@ export function deleteLoc(id) {
   };
 }
 
+// Survey actions
+
+export function createSurvey(survey) {
+  return (dispatch) => {
+    axios.post(`${ROOT_URL}/survey`, survey)
+    .catch(error => {
+      dispatch(reportError(`Creating survey question failed: ${error.response.data}`));
+    });
+  };
+}
+
 // Analytics actions
 
 export function fetchIntentData() {
@@ -233,7 +245,7 @@ export function fetchLocData() {
 
 export function fetchSurveyData() {
   return (dispatch) => {
-    axios.get(`${ROOT_URL}/survey/data`)
+    axios.get(`${ROOT_URL}/survey`)
     .then(response => {
       dispatch({
         type: ActionTypes.FETCH_SURVEY_DATA,

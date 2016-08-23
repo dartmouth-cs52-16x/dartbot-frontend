@@ -3,6 +3,7 @@
 $buttonColor: lighten(green, 50%);
 body {
   font-family: "Helvetica", sans-serif;
+  font-weight: 300;
   color: rgb(10%, 10%, 10%);
   background: darken(white, 3%);
   margin: 50px 50px 0px 50px;
@@ -62,6 +63,9 @@ iframe {
   text-decoration: underline;
   opacity: 1;
 }
+#aboutLink {
+  color: darken(yellow, 25);
+}
 #bioLink{
   text-decoration: none;
   padding-right: 20px;
@@ -113,6 +117,18 @@ iframe {
   text-decoration: underline;
   opacity: 1;
 }
+
+.padding {
+  padding-top: 60px;
+}
+
+#about {
+  padding: 60px;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
+
 /* Styles for Map Page */
 #mapContainer {
   height: 100vh;
@@ -149,6 +165,12 @@ iframe {
   }
 }
 
+.adminNav {
+  .pageLinks {
+    font-size: 15px;
+  }
+}
+
 .bios {
   padding: 50px;
 }
@@ -164,7 +186,7 @@ iframe {
     padding: 10px;
     border-radius: 5px;
     box-shadow: none;
-    border: none;
+    border: 1px solid gray;
   }
   button {
     font-size: 16px;
@@ -197,14 +219,14 @@ iframe {
   }
   .graphs {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column;
   }
-  #locGraph, #intentGraph {
+  #locGraph, #intentGraph, #surveyGraphs {
     margin: 20px;
     justify-content: center;
     display: flex;
     .tick {
-      font-size: 10.5px;
+      font-size: 12px;
     }
     div {
       padding: 30px;
@@ -216,6 +238,14 @@ iframe {
       text-align: center;
       font-size: 25px;
       font-weight: lighter;
+    }
+    table {
+      margin: 5px;
+      background-color: white;
+      border-radius: 5px;
+      border: 1px solid gray;
+      font-weight: 300;
+      padding: 10px;
     }
   }
 }
@@ -262,6 +292,37 @@ iframe {
   button {
     margin: 5px;
   }
+}
+
+#updateIntents {
+  padding: 60px;
+  table {
+    margin: 5px;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid gray;
+    font-weight: 300;
+    padding: 15px;
+    tr {
+      border: 1px solid lighten(gray, 20);;
+    }
+  }
+  th {
+    font-weight: 300;
+    text-align: left;
+  }
+  th.query {
+    width: 10rem;
+  }
+  a:hover {
+    font-weight: 600;
+    color: green;
+  }
+  .tableHeading th {
+    font-weight: bold;
+    text-align: center;
+  }
+
 }
 
 /**-----------admin page ----------------**/
