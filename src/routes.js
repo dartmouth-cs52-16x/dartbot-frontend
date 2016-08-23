@@ -16,11 +16,11 @@ import UpdateLoc from './containers/admin/adminComponents/updateLoc';
 export default(
   <div>
     <Route path="/" component={App}>
-      <IndexRoute component={Map} />
+      <IndexRoute component={Bot} />
       <Route path="profiles" component={BioContainer} />
       <Route path="signin" component={SignIn} />
       <Route path="signup" component={SignUp} />
-      <Route path="bot" component={Bot} />
+      <Route path="tour" component={Map} />
     </Route>
     <Route path="/admin" component={RequireAuth(AdminContainer)}>
       <IndexRoute component={Analytics} />

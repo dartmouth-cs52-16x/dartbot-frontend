@@ -7,6 +7,7 @@ import Pin from '../../../components/pin';
 
 class UpdateLocItem extends Component {
   static defaultProps = {
+    center: { lat: 43.70357989999999, lng: -72.28878229999998 },
     zoom: 17,
   };
   constructor(props) {
@@ -42,6 +43,7 @@ class UpdateLocItem extends Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <div className="updateLocItem collapsibleBio">
         <button className="accordion" onClick={this.handleOpenClose}>{this.props.loc.title}</button>
@@ -52,13 +54,14 @@ class UpdateLocItem extends Component {
             <center>
               <div className="newLocMap">
                 <GoogleMap
-                  center={{ lat: this.state.loc.gps.lat, lng: this.state.loc.gps.long }}
+                  defaultCenter={this.props.center}
+                  center={{ lat: parseFloat(this.state.loc.gps.lat), lng: parseFloat(this.state.loc.gps.long) }}
                   defaultZoom={this.props.zoom}
                   bootstrapURLKeys={{
                     key: 'AIzaSyDkwluTAgwsZKe2_u2cW2rvSe1dBVgz6zw',
                   }}
                 >
-                  <Pin lat={this.state.loc.gps.lat} lng={this.state.loc.gps.long} text="here" />
+                  <Pin lat={this.state.loc.gps.lat} lng={this.state.loc.gps.long} text="" />
                 </GoogleMap>
               </div>
             </center>

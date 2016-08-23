@@ -1,16 +1,20 @@
 
-@import url(https://fonts.googleapis.com/css?family=Lato:300,700|Montserrat|Open+Sans:400,600|Open+Sans+Condensed:300|Raleway:100,200,500,600|Roboto|Source+Sans+Pro);
-$buttonColor: lighten(blue, 30%);
+@import url(https://fonts.googleapis.com/css?family=Lato:300,700|Montserrat|Open+Sans|Open+Sans+Condensed:300|Raleway:100,200,500,600|Roboto|Source+Sans+Pro);
+$buttonColor: lighten(green, 50%);
 body {
   font-family: "Helvetica", sans-serif;
   color: rgb(10%, 10%, 10%);
   background: darken(white, 3%);
   margin: 50px 50px 0px 50px;
+  background-image: url('~/bundle/../imgs/green2blur.jpg');
+  background-size: cover;
 }
 iframe {
   margin: auto;
   justify-content: center;
   margin: 20px;
+  border-radius: 5px;
+  border: 1px solid gray;
 }
 /* Styles for the NavBar */
 .navbarContainer {
@@ -73,6 +77,10 @@ iframe {
 }
 #botpage {
   padding: 20px;
+  h1 {
+    font-weight: 300;
+    text-align: center;
+  }
 }
 #bot {
   justify-content: center;
@@ -177,10 +185,20 @@ iframe {
 }
 
 .analytics{
+  padding-top: 40px;
   font-weight: lighter;
   display: flex;
   flex-flow: column;
   justify-content: center;
+  h1 {
+    font-weight: lighter;
+    text-align: center;
+    font-size: 40px;
+  }
+  .graphs {
+    display: flex;
+    flex-flow: row wrap;
+  }
   #locGraph, #intentGraph {
     margin: 20px;
     justify-content: center;
@@ -209,7 +227,7 @@ iframe {
 
 
 #updateLocs {
-  padding: 60px;
+  padding-top: 60px;
   input, textarea {
     border: 1px solid gray;
   }
@@ -229,6 +247,14 @@ iframe {
     margin-top: 7px;
   }
 }
+
+.updateLocItem {
+  margin: 5px;
+  .newbar {
+    padding: 0px;
+  }
+}
+
 .updateLocButtons {
   display: flex;
   flex-flow: row;
@@ -280,8 +306,7 @@ div.panel {
       display: flex;
       flex-direction: row;
       justify-content: space-around;
-      align-items:center;
-      margin: 15px 0;
+      margin-bottom: 30px;
     }
     .column-form {
       display:flex;
@@ -339,41 +364,38 @@ div.panel.show {
   width: 0.1px;
 	height: 0.1px;
 	opacity: 0;
+	overflow: hidden;
 	position: absolute;
+	z-index: -1;
   left: 52%;
 }
 /**--------------input form ------------**/
-.collapsible-bio {
+.collapsible-bio input[type="text"] {
+  font-family: "Open Sans", sans-serif;
+  box-shadow: none;
+  padding: 10px;
+  padding-bottom: 4px;
+  margin-bottom: 5px;
+  border: none;
+  border-bottom: solid 2px #c9c9c9;
+  transition: border 0.3s;
+  width: 200px;
+  columns: 80;
+
+}
+.collapsible-bio input[type="text"]:focus,
+.collapsible-bio input[type="text"].focus {
+  border-bottom: solid 2.6px #969696;
+  outline: none;
+}
+
+.collapsible-bio label {
   font-family: "Raleway", sans-serif;
   font-size: 13.5px;
   display: inline-block;
   min-width:50px;
   text-align:right;
   padding-right: 3px;
-  .input {
-    margin: 15px 0;
-  }
-}
-
-.collapsible-bio textarea {
-  font-family: "Open Sans", sans-serif;
-  box-shadow: none;
-  padding: 0px 0px 2.3px 5px;
-  margin-bottom: -2px;
-  border: none;
-  border-bottom: solid 2px #c9c9c9;
-  transition: border 0.3s;
-  width: 230px;
-  rows: 4;
-  -moz-columns: 63;
-  columns: 80;
-  resize: none;
-  height: 16px;
-}
-.collapsible-bio textarea:focus,
-.collapsible-bio textarea.focus {
-  border-bottom: solid 2.6px #969696;
-  outline: none;
 }
 
 /**---Image column----**/
@@ -405,32 +427,25 @@ div.panel.show {
 /**-------Bios--------**/
 .bios-user{
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column;
   align-items: center;
   justify-content: space-around;
   text-align: center;
   margin: 0 -10%;
   padding: 3% 15%;
-  background-image: url('~/bundle/../imgs/green2blur.jpg');
-  background-repeat:none;
-  background-size: cover;
-
 }
 
 .bio-item {
-  width: 400px;
+  width: 550px;
   background:#fff;
   border-radius: 6px;
-  margin: 10px 10px 10px 10px;
 }
 
 .bio-item  {
   box-shadow: 2px 2px 13px #303030;
   .image img {
+    max-width:100%;
     border-radius: 6px 6px 0 0;
-    width: 400px;
-    height: 325px;
-    object-fit: cover;
   }
   .name {
     padding-top: 18px;
@@ -439,50 +454,19 @@ div.panel.show {
     letter-spacing: 1.75px;
     font-family:'Raleway', sans-serif;
     font-weight:600;
-    word-wrap: break-word;
   }
   .major {
     margin: -8px 0 30px 0;
     font-family: "Raleway", sans-serif;
     font-weight: 200;
     text-transform:uppercase;
-    word-wrap: break-word;
   }
   .content {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
-    font-size: .84em;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: .9em;
+    letter-spacing: .8px;
     padding: 0 5%;
-    color: #383838;
-    p {
-      word-wrap: break-word;
-    }
-  }
-}
-
-.footer {
-  margin: 15px 0;
-  a {
-    text-decoration: none;
-    color: #000;
-    margin: 0 18px;
-  }
-  .fa-facebook-square {
-    color: #3b5998;
-  }
-  .fa-twitter {
-    color:#00aced;
-  }
-  font-size: 1.3em;
-  display:flex;
-  flex-direction:row;
-  justify-content: center;
-  p {
-    position: absolute;
-    right: 10px;
-    font-family: "Helvetica";
-    font-size: 14px;
-    font-weight: 300;
     color: #303030;
   }
 }

@@ -14,7 +14,7 @@ class NavBar extends React.Component {
         <Link className="homeLink" to="/">DartBot</Link>
         <div className="pageLinks">
           <Link id="bioLink" to="profiles">Tour Guide Profiles</Link>
-          <Link id="botLink" to="bot">DartTourBot</Link>
+          <Link id="botLink" to="tour">The Tour</Link>
           <Link id="adminLink" to="/admin">Admin</Link>
         </div>
       </div>

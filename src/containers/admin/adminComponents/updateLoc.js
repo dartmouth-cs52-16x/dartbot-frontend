@@ -68,6 +68,7 @@ class UpdateLoc extends Component {
             <input value={this.state.newLoc.title} onChange={this.handleEdit('title')} placeholder="Location Title" />
             <Textarea value={this.state.newLoc.content} onChange={this.handleEdit('content')} placeholder="Tour Content" />
             <center>
+              <p>(Click to choose location:)</p>
               <div className="newLocMap">
                 <GoogleMap
                   defaultCenter={this.props.center}

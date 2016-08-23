@@ -38,7 +38,7 @@ class Analytics extends Component {
         yAxisLabel="Hits"
         xAxisLabel="Location"
         height={300}
-        width={90 * values.length + 73}
+        width={60 * values.length + (10 * (values.length + 1)) + 73}
         data={data}
       />
     );
@@ -61,7 +61,7 @@ class Analytics extends Component {
         yAxisLabel="Hits"
         xAxisLabel="Query"
         height={300}
-        width={90 * values.length + 73}
+        width={60 * values.length + (10 * (values.length + 1)) + 73}
         data={data}
       />
     );
@@ -70,14 +70,16 @@ class Analytics extends Component {
   render() {
     return (
       <div className="analytics">
-        <h1>Analytics</h1>
-        <div id="locGraph">
-          {this.renderLocationGraph()}
-        </div>
-        <div id="intentGraph">
-          {this.renderIntentGraph()}
-        </div>
-        <div id="surveyGraphs">
+        <h1>Tour Analytics</h1>
+        <div className="graphs">
+          <div id="locGraph">
+            {this.renderLocationGraph()}
+          </div>
+          <div id="intentGraph">
+            {this.renderIntentGraph()}
+          </div>
+          <div id="surveyGraphs">
+          </div>
         </div>
       </div>
     );
