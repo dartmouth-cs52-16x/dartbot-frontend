@@ -24,7 +24,7 @@ class UpdateIntent extends Component {
   renderLocs() {
     this.props.locs.map(loc => {
       return (
-        <UpdateLocItem loc={loc} update={this.props.update} delete={this.props.deleteLoc} />
+        <UpdateIntentItem loc={loc} update={this.props.update} delete={this.props.deleteLoc} />
       );
     });
   }

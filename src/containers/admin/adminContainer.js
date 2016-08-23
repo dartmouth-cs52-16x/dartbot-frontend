@@ -16,9 +16,9 @@ const AdminContainer = (props) => {
       <div className="navbarContainer">
         <a className="homeLink" onClick={returnClick}>Back to DartBot</a>
         <div className="pageLinks">
-          <Link to="admin/analytics">Analytics</Link>
-          <Link to="admin/bios">Edit Tour Guide Profiles</Link>
-          <Link to="admin/locs">Edit Tour Locations </Link>
+          <Link to="/admin">Analytics</Link>
+          <Link to="/admin/bios">Tour Guide Profiles</Link>
+          <Link to="/admin/locs">Tour Locations </Link>
         </div>
       </div>
       <Error />

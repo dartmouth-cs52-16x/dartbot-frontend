@@ -10,8 +10,8 @@ export default class Pin extends Component {
 
   render() {
     return (
-      <div id="pinContainer">
-        <p id="pinLetter">{this.props.text}</p>
+      <div className="pinContainer">
+        <p className="pinLetter">{this.props.text}</p>
       </div>
     );
   }

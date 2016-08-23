@@ -8,9 +8,7 @@ class Analytics extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      locData: {},
-      intentData: {},
-      surveyData: {},
+
     };
     this.renderLocationGraph = this.renderLocationGraph.bind(this);
     this.renderIntentGraph = this.renderIntentGraph.bind(this);
@@ -19,40 +17,35 @@ class Analytics extends Component {
   componentWillMount() {
     this.props.fetchLocData();
     this.props.fetchIntentData();
-    this.props.fetchSurveyData();
-    this.setState({
-      locData: this.props.locData,
-      intentData: this.props.intentData,
-      surveyData: this.props.surveyData,
-    });
+  //  this.props.fetchSurveyData();
   }
 
   renderLocationGraph = () => {
-    const values = this.state.intentData.map((loc) => {
+    const values = this.props.locData.map((loc) => {
       return {
         x: loc.title,
         y: loc.hits,
       };
     });
-    console.log(values);
+    // console.log(values);
     const data = [{
       name: 'Location Data',
       values,
     }];
-    console.log(data);
     return (
       <BarChart
         title="Location Hits"
         yAxisLabel="Hits"
         xAxisLabel="Location"
-        height={500}
+        height={300}
+        width={90 * values.length + 73}
         data={data}
       />
     );
   }
 
   renderIntentGraph = () => {
-    const values = this.state.intentData.map((intent) => {
+    const values = this.props.intentData.map((intent) => {
       return {
         x: intent.query,
         y: intent.hits,
@@ -67,7 +60,8 @@ class Analytics extends Component {
         title="Query Hits"
         yAxisLabel="Hits"
         xAxisLabel="Query"
-        height={500}
+        height={300}
+        width={90 * values.length + 73}
         data={data}
       />
     );
@@ -96,12 +90,10 @@ const mapStateToProps = (state) => ({
   surveyData: state.analytics.surveyData,
 });
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchLocData,
-    fetchIntentData,
-    fetchSurveyData,
-  };
+const mapDispatchToProps = {
+  fetchLocData,
+  fetchIntentData,
+  fetchSurveyData,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Analytics);

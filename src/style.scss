@@ -117,7 +117,7 @@ iframe {
   z-index: 10;
 }
 /* Pin Styles */
-#pinContainer {
+.pinContainer {
   height: 35px;
   width: 35px;
   border-radius: 50%;
@@ -128,9 +128,11 @@ iframe {
   font-size: 20px;
   font-weight: 300;
 }
-#pinLetter {
+.pinLetter {
   margin-top: 5px;
 }
+
+/* Admin Styling */
 .admin {
   display: flex;
   flex-flow: column;
@@ -176,21 +178,66 @@ iframe {
   padding: 20px;
 }
 
+.analytics{
+  font-weight: lighter;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  #locGraph, #intentGraph {
+    margin: 20px;
+    justify-content: center;
+    display: flex;
+    .tick {
+      font-size: 10.5px;
+    }
+    div {
+      padding: 30px;
+      background-color: white;
+      border-radius: 10px;
+      border: 1px solid gray;
+    }
+    h4 {
+      text-align: center;
+      font-size: 25px;
+      font-weight: lighter;
+    }
+  }
+}
+
 .error {
   padding-top: 25px;
   color: red;
 }
 
-.graphs {
-  display: flex;
-  flex-flow: row wrap;
-  .graph {
-    margin: 20px;
+
+#updateLocs {
+  padding: 60px;
+  input, textarea {
+    border: 1px solid gray;
   }
 }
 
-.newbar{
-  padding-top: 30px;
+.newLocMap {
+  height: 300px;
+  width: 70vw;
+  display: flex;
+  justify-content: center;
+  .pinContainer {
+    font-size: 12px;
+    width: 30px;
+    height: 30px;
+  }
+  .pinLetter {
+    margin-top: 7px;
+  }
+}
+.updateLocButtons {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  button {
+    margin: 5px;
+  }
 }
 
 /**-----------admin page ----------------**/

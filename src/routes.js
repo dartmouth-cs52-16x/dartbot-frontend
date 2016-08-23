@@ -23,7 +23,7 @@ export default(
       <Route path="bot" component={Bot} />
     </Route>
     <Route path="/admin" component={RequireAuth(AdminContainer)}>
-      <Route path="analytics" component={Analytics} />
+      <IndexRoute component={Analytics} />
       <Route path="bios" component={UpdateContainer} />
       <Route path="locs" component={UpdateLoc} />
     </Route>
