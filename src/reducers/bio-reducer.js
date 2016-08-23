@@ -10,9 +10,9 @@ const BioReducer = (state = { all: [], bio: null }, action) => {
       // console.log(action.payload);
       return { ...state, all: state.all.concat(action.payload) };
     case ActionTypes.UPDATE_BIO:
-      return state;
+      return { ...state, all: [] };
     case ActionTypes.DELETE_BIO:
-      return state;
+      return { ...state, all: action.bio };
     default:
       return state;
   }

@@ -100,7 +100,6 @@ export function createBio(bio, file) {
         type: ActionTypes.CREATE_BIO,
         payload: response.data,
       });
-      browserHistory.push('/admin/bios');
     }).catch(error => {
       // console.log(error);
     });
@@ -127,9 +126,10 @@ export function updateBio(bio, file, id) {
 export function deleteBio(id) {
   return (dispatch) => {
     axios.delete(`${ROOT_URL}/bios/${id}`, { headers: { authorization: localStorage.getItem('token') } }).then((response) => {
+      console.log(response);
       dispatch({
         type: ActionTypes.DELETE_BIO,
-        payload: response.data,
+        bio: response.data,
       });
       browserHistory.push('/admin/bios');
     }).catch(error => {

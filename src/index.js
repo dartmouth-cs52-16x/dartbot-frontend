@@ -8,6 +8,7 @@ import thunk from 'redux-thunk';
 import './style.scss';
 import Reducer from './reducers/index';
 import { ActionTypes } from './actions';
+require('font-awesome/css/font-awesome.css');
 
 const store = createStore(Reducer, compose(
   applyMiddleware(thunk),
