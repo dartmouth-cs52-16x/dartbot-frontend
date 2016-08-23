@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { fetchLocs, createLoc, updateLoc, deleteLoc } from '../../../actions';
-import UpdateLocItem from './update-loc-item';
+import { fetchIntent } from '../../../actions';
+import UpdateIntentItem from './update-intent-item';
 
-class UpdateLoc extends Component {
+class UpdateIntent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
-      gps: { lat: '', long: '' },
-      content: '',
+      querey: '',
+      response: '',
     };
-    this.onNewLocClick = this.onNewLocClick.bind(this);
-    this.renderLocs = this.renderLocs.bind(this);
+    this.onNewIntentClick = this.onNewIntentClick.bind(this);
+    this.renderIntents = this.renderIntent.bind(this);
   }
 
   componentWillMount() {
     this.props.fetch();
   }
 
-  onNewLocClick() {
+  onNewIntentClick() {
     this.props.createLoc(this.state);
   }
 
@@ -44,7 +42,7 @@ class UpdateLoc extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  locs: state.locs.all,
+  intents: state.intents.all,
 });
 
 const mapDispatchToProps = (dispatch) => {

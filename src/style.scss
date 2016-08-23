@@ -2,7 +2,7 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:300,700|Montserrat|Open+Sans:400,600|Open+Sans+Condensed:300|Raleway:100,200,500,600|Roboto|Source+Sans+Pro);
 $buttonColor: lighten(blue, 30%);
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Helvetica", sans-serif;
   color: rgb(10%, 10%, 10%);
   background: darken(white, 3%);
   margin: 50px 50px 0px 50px;
@@ -13,7 +13,7 @@ iframe {
   margin: 20px;
 }
 /* Styles for the NavBar */
-#navbarContainer {
+.navbarContainer {
   background-color: #ffffff;
   color: #454343;
   height: 40px;
@@ -28,12 +28,24 @@ iframe {
   z-index: 999;
   border-bottom: 2px solid #3498db;
 }
-#pageLinks {
+.pageLinks {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  a {
+    text-decoration: none;
+    padding-right: 20px;
+    opacity: .6;
+    transition: all 0.5s ease;
+    font-weight: 300;
+    font-family: "Helvetica", sans-serif;
+  }
+  a:hover {
+    text-decoration: underline;
+    opacity: 1;
+  }
 }
-#homeLink {
+.homeLink {
   text-decoration: none;
   padding-left: 5vw;
   color: black;
@@ -42,7 +54,7 @@ iframe {
   font-weight: 300;
   font-family: "Helvetica", sans-serif;
 }
-#homeLink:hover {
+.homeLink:hover {
   text-decoration: underline;
   opacity: 1;
 }
@@ -121,18 +133,9 @@ iframe {
   display: flex;
   flex-flow: column;
   justify-content: center;
+  padding: 0;
   h1 {
     margin: auto;
-  }
-}
-
-#adminNav {
-  display: flex;
-  flex-flow: row;
-  margin: auto;
-  padding: 2rem;
-  a {
-    margin: 5px;
   }
 }
 
@@ -159,7 +162,6 @@ iframe {
     margin: auto;
     margin-top: 3px;
     border-radius: 5px;
-    font-family: "Reem Kufi", sans-serif;
     border: 1px solid transparentize(black, .75);;
     background-color: $buttonColor;
   }
@@ -277,7 +279,24 @@ div.panel.show {
     }
   }
 }
+/**---Image column----**/
+.image-column{
+  img {
+    max-width:150px;
+  }
+  text-align: center;
+  position:relative;
+}
 
+.collapsible-bio input[type="file"] {
+  width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+  left: 52%;
+}
 /**--------------input form ------------**/
 .collapsible-bio {
   font-family: "Raleway", sans-serif;
@@ -340,8 +359,6 @@ div.panel.show {
 
 /**-------Bios--------**/
 .bios-user{
-  background-image: url('~/bundle/../imgs/green2blur.jpg');
-  background-size: cover;
   display: flex;
   flex-flow: row wrap;
   align-items: center;
@@ -349,6 +366,9 @@ div.panel.show {
   text-align: center;
   margin: 0 -10%;
   padding: 3% 15%;
+  background-image: url('~/bundle/../imgs/green2blur.jpg');
+  background-size: cover;
+
 }
 
 .bio-item {

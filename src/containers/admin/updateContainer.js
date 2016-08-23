@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 // import { Link } from 'react-router';
 import { createBio, updateBio, fetchBios, deleteBio } from '../../actions';
 import CollapsibleBio from './adminComponents/collapsibleBio';
-import { browserHistory } from 'react-router';
 
 const emptyBio = {
   name: '',
