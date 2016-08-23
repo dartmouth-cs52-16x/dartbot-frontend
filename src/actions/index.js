@@ -20,6 +20,7 @@ export const ActionTypes = {
   CREATE_LOC: 'CREATE_LOC',
   UPDATE_LOC: 'UPDATE_LOC',
   DELETE_LOC: 'DELETE_LOC',
+  CREATE_SURVEY: 'CREATE_SURVEY',
   FETCH_INTENT_DATA: 'FETCH_INTENT_DATA',
   FETCH_LOC_DATA: 'FETCH_LOC_DATA',
   FETCH_SURVEY_DATA: 'FETCH_SURVEY_DATA',
@@ -29,7 +30,7 @@ export const ActionTypes = {
 
 // Error actions
 
-function reportError(error) {
+export function reportError(error) {
   return ({
     type: ActionTypes.SET_ERROR,
     message: error,
@@ -170,12 +171,9 @@ export function fetchLoc(id) {
 
 export function createLoc(loc) {
   return (dispatch) => {
-    axios.post(`${ROOT_URL}/locs`)
+    axios.post(`${ROOT_URL}/locs`, loc, { headers: { authorization: localStorage.getItem('token') } })
     .then(response => {
-      dispatch({
-        type: ActionTypes.CREATE_LOC,
-        payload: response.data,
-      });
+      dispatch(fetchLocs());
     }).catch(error => {
       dispatch(reportError(`Creating location failed: ${error.response.data}`));
     });
@@ -184,7 +182,7 @@ export function createLoc(loc) {
 
 export function updateLoc(loc, id) {
   return (dispatch) => {
-    axios.put(`${ROOT_URL}/locs/${id}`)
+    axios.put(`${ROOT_URL}/locs/${id}`, loc, { headers: { authorization: localStorage.getItem('token') } })
     .then(response => {
       dispatch(fetchLocs());
     }).catch(error => {
@@ -195,11 +193,22 @@ export function updateLoc(loc, id) {
 
 export function deleteLoc(id) {
   return (dispatch) => {
-    axios.delete(`${ROOT_URL}/locs/${id}`)
+    axios.delete(`${ROOT_URL}/locs/${id}`, { headers: { authorization: localStorage.getItem('token') } })
     .then(response => {
       dispatch(fetchLocs());
     }).catch(error => {
       dispatch(reportError(`Deleting loction failed: ${error.response.data}`));
+    });
+  };
+}
+
+// Survey actions
+
+export function createSurvey(survey) {
+  return (dispatch) => {
+    axios.post(`${ROOT_URL}/survey`, survey)
+    .catch(error => {
+      dispatch(reportError(`Creating survey question failed: ${error.response.data}`));
     });
   };
 }
@@ -236,7 +245,7 @@ export function fetchLocData() {
 
 export function fetchSurveyData() {
   return (dispatch) => {
-    axios.get(`${ROOT_URL}/survey/data`)
+    axios.get(`${ROOT_URL}/survey`)
     .then(response => {
       dispatch({
         type: ActionTypes.FETCH_SURVEY_DATA,
