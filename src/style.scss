@@ -365,7 +365,7 @@ div.panel.show {
   margin: 0 -10%;
   padding: 3% 15%;
   background-image: url('~/bundle/../imgs/green2blur.jpg');
-  background-repeat:none; 
+  background-repeat:none;
   background-size: cover;
 
 }
@@ -430,4 +430,12 @@ div.panel.show {
   display:flex;
   flex-direction:row;
   justify-content: center;
+  p {
+    position: absolute;
+    right: 10px;
+    font-family: "Helvetica";
+    font-size: 14px;
+    font-weight: 300;
+    color: #303030;
+  }
 }
