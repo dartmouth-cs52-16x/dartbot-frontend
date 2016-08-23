@@ -16,7 +16,7 @@ import UpdateLoc from './containers/admin/adminComponents/updateLoc';
 import UpdateIntent from './containers/admin/adminComponents/updateIntents';
 import UpdateSurvey from './containers/admin/adminComponents/updateSurveys';
 
-export default(
+export default (
   <div>
     <Route path="/" component={App}>
       <IndexRoute component={Bot} />
@@ -34,5 +34,4 @@ export default(
       <Route path="signup" component={SignUp} />
     </Route>
   </div>
-
 );
