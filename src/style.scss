@@ -276,20 +276,20 @@ iframe {
    height: 300px;
    width: 40vw;
    margin: 10px;
+   .pinContainer {
+     width: 30px;
+     height: 30px;
+   }
+   .pinLetter {
+     font-size: 12px;
+     margin-top: 7px;
+   }
  }
 
 .graphs {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-   .pinContainer {
-     font-size: 12px;
-     width: 30px;
-     height: 30px;
-   }
-   .pinLetter {
-     margin-top: 7px;
-   }
  }
 
  .updateLocItem {
@@ -492,7 +492,7 @@ div.panel.show {
   }
   label {
     font-family: "Montserrat";
-    text-transform:uppercase;
+    text-transform: uppercase;
     font-size: 11.8px;
     :hover {
       font-size: 13px;
