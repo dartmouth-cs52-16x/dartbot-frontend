@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createSurvey } from '../../../actions/intentActions';
+import { createSurvey } from '../../../actions';
 import Textarea from 'react-textarea-autosize';
 
 class UpdateSurvey extends Component {
@@ -21,7 +21,7 @@ class UpdateSurvey extends Component {
     if (this.state.survey.question == '') {
       window.alert('Empty field not allowed');
     } else {
-      this.props.createSurvey(this.state);
+      this.props.createSurvey(this.state.survey);
       this.setState({ survey: { question: '' } });
     }
   }
@@ -39,7 +39,7 @@ class UpdateSurvey extends Component {
         <div className="panel show newbar">
           <span>Survey questions are answered on a scale of 1 to 5: </span>
           <Textarea value={this.state.survey.question} onChange={this.handleEdit('question')} placeholder="Survey Question" />
-          <button onClick={this.onNewClick}> Add Survey Question</button>
+          <button onClick={this.onNewClick}>Add Survey Question</button>
         </div>
       </div>
     );
