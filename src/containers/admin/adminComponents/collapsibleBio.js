@@ -4,7 +4,7 @@ class CollapsibleBio extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { bio: { name: '', major: '', year: '', content: '' }, error: false, file: null };
+    this.state = { bio: { name: '', major: '', year: '', content: '' }, error: false, file: null, imgURL: null };
     this.handleEdit = this.handleEdit.bind(this);
     this.handleSave = this.handleSave.bind(this);
     this.handleOpenClose = this.handleOpenClose.bind(this);
@@ -19,12 +19,18 @@ class CollapsibleBio extends Component {
   handleImage(e) {
     const file = e.target.files[0];
     if (file != null) {
-      // const reader = new FileReader();
+      const reader = new FileReader();
+
+      reader.onload = (event) => {
+        this.setState({
+          file,
+          imgURL: event.target.result,
+        });
+      };
+
+      reader.readAsDataURL(e.target.files[0]);
 
       // reader.onload = (upload) => {
-      this.setState({
-        file,
-      });
       // };
       // reader.readAsDataURL(file);
     }
@@ -51,7 +57,7 @@ class CollapsibleBio extends Component {
         this.setState({ error: true });
       } else {
         this.props.create(result, this.state.file);
-        this.setState({ error: false });
+        this.setState({ bio: { name: '', major: '', year: '', content: '' }, error: false, file: null });
       }
       return;
     }
@@ -62,7 +68,12 @@ class CollapsibleBio extends Component {
   render() {
     const header = this.props.bio.name ? this.props.bio.name : 'New';
     const error = this.state.error ? 'Fill out all fields before submitting!' : '';
-    const imgURL = this.props.bio.image ? this.props.bio.image : 'http://www.patriotenergygroup.com/images2/tba.png';
+    let imgURL;
+    if (this.state.imgURL) {
+      imgURL = this.state.imgURL;
+    } else {
+      imgURL = this.props.bio.image ? this.props.bio.image : 'http://www.patriotenergygroup.com/images2/tba.png';
+    }
     return (
       <div className="collapsible-bio">
         <button className="accordion" onClick={this.handleOpenClose}>{header}</button>

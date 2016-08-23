@@ -12,7 +12,6 @@ const BioReducer = (state = { all: [], bio: null }, action) => {
     case ActionTypes.UPDATE_BIO:
       return { ...state, all: [] };
     case ActionTypes.DELETE_BIO:
-      console.log(action.bios);
       return { ...state, all: action.bio };
     default:
       return state;

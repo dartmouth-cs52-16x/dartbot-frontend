@@ -292,9 +292,7 @@ div.panel.show {
   width: 0.1px;
 	height: 0.1px;
 	opacity: 0;
-	overflow: hidden;
 	position: absolute;
-	z-index: -1;
   left: 52%;
 }
 /**--------------input form ------------**/
@@ -375,13 +373,16 @@ div.panel.show {
   width: 400px;
   background:#fff;
   border-radius: 6px;
+  margin: 10px 10px 10px 10px;
 }
 
 .bio-item  {
   box-shadow: 2px 2px 13px #303030;
   .image img {
-    max-width:100%;
     border-radius: 6px 6px 0 0;
+    width: 400px; 
+    height: 325px;
+    object-fit: cover;
   }
   .name {
     padding-top: 18px;
