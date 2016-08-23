@@ -32,6 +32,13 @@ class UpdateLoc extends Component {
 
   onNewLocClick() {
     this.props.create(this.state.newLoc);
+    this.setState({
+      newLoc: {
+        title: '',
+        gps: { lat: '', long: '' },
+        content: '',
+      },
+    });
   }
 
   onMapClick(event) {

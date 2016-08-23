@@ -7,7 +7,6 @@ import Pin from '../../../components/pin';
 
 class UpdateLocItem extends Component {
   static defaultProps = {
-    center: { lat: 43.70357989999999, lng: -72.28878229999998 },
     zoom: 17,
   };
   constructor(props) {
@@ -16,6 +15,7 @@ class UpdateLocItem extends Component {
       loc: props.loc,
     };
     this.handleEdit = this.handleEdit.bind(this);
+    this.handleGPSEdit = this.handleGPSEdit.bind(this);
     this.handleOpenClose = this.handleOpenClose.bind(this);
     this.onDeleteClick = this.onDeleteClick.bind(this);
     this.onUpdateClick = this.onUpdateClick.bind(this);
@@ -27,6 +27,14 @@ class UpdateLocItem extends Component {
 
   onUpdateClick() {
     this.props.updateLoc(this.state.loc, this.state.loc.id);
+  }
+
+  handleGPSEdit(field) {
+    return (event) => {
+      this.setState({
+        loc: { ...this.state.loc, gps: { ...this.state.loc.gps, [field]: event.target.value } },
+      });
+    };
   }
 
   handleEdit(field) {
@@ -51,10 +59,9 @@ class UpdateLocItem extends Component {
           <div className="updateLocInput newbar">
             <input value={this.state.loc.title} onChange={this.handleEdit('title')} placeholder="Location Title" />
             <Textarea value={this.state.loc.content} onChange={this.handleEdit('content')} placeholder="Tour Content" />
-            <center>
+            <div className="map">
               <div className="newLocMap">
                 <GoogleMap
-                  defaultCenter={this.props.center}
                   center={{ lat: parseFloat(this.state.loc.gps.lat), lng: parseFloat(this.state.loc.gps.long) }}
                   defaultZoom={this.props.zoom}
                   bootstrapURLKeys={{
@@ -64,7 +71,13 @@ class UpdateLocItem extends Component {
                   <Pin lat={this.state.loc.gps.lat} lng={this.state.loc.gps.long} text="" />
                 </GoogleMap>
               </div>
-            </center>
+              <div className="newbar">
+                <label>Latitude</label>
+                <input value={this.state.loc.gps.lat} onChange={this.handleGPSEdit('lat')} />
+                <label>Longitude</label>
+                <input value={this.state.loc.gps.long} onChange={this.handleGPSEdit('long')} />
+              </div>
+            </div>
           </div>
           <div className="updateLocButtons">
             <button onClick={this.onUpdateClick}>Update</button>

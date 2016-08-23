@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchIntent, createIntent, updateIntent } from '../../../actions/intentActions';
+import { fetchIntent, updateIntent } from '../../../actions/intentActions';
 import Textarea from 'react-textarea-autosize';
 import UpdateIntentItem from './update-intent-item';
 
@@ -24,13 +24,12 @@ class UpdateIntent extends Component {
     this.props.fetchIntent();
   }
 
-  onIntentClick(query) {
-    this.setState({ ...this.state.newIntent, query });
-    console.log(this.state);
+  onIntentClick(intent) {
+    this.setState({ newIntent: { query: intent.query, response: intent.response } });
   }
 
   onNewIntentClick() {
-    this.props.createIntent(this.state.newIntent);
+    this.props.updateIntent(this.state.newIntent);
     this.setState({
       newIntent: {
         query: '',
@@ -44,7 +43,6 @@ class UpdateIntent extends Component {
       this.setState({
         newIntent: { ...this.state.newIntent, [field]: event.target.value },
       });
-      console.log(this.state);
     };
   }
 
@@ -87,7 +85,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   fetchIntent,
-  createIntent,
   updateIntent,
 };
 

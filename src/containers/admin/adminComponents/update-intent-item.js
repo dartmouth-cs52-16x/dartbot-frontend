@@ -2,7 +2,7 @@ import React from 'react';
 
 const UpdateIntentItem = (props) => {
   const onIntentClick = () => {
-    props.onIntentClick(props.intent.query);
+    props.onIntentClick(props.intent);
   };
   return (
     <tr>

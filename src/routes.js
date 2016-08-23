@@ -23,7 +23,6 @@ export default(
       <Route path="about" component={About} />
       <Route path="profiles" component={BioContainer} />
       <Route path="signin" component={SignIn} />
-      <Route path="signup" component={SignUp} />
       <Route path="tour" component={Map} />
     </Route>
     <Route path="/admin" component={RequireAuth(AdminContainer)}>
@@ -32,6 +31,7 @@ export default(
       <Route path="locs" component={UpdateLoc} />
       <Route path="intents" component={UpdateIntent} />
       <Route path="surveys" component={UpdateSurvey} />
+      <Route path="signup" component={SignUp} />
     </Route>
   </div>
 
