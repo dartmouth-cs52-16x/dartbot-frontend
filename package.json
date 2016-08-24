@@ -4,7 +4,7 @@
   "description": "DartBot the virtual tour guide provides the experience of a Dartmouth tour when an official tour is not available. DartBot operates through two main facets: a web application and a Facebook Messenger bot.",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified.\"",
+    "test": "./node_modules/.bin/eslint **.js",
     "start": "webpack-dev-server --inline --hot",
     "build": "WEBPACK_ENV=production node_modules/.bin/webpack --optimize-minimize --progress --color",
     "deploy": "npm run build; surge -p ."
