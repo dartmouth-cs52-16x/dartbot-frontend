@@ -51,7 +51,6 @@ class UpdateLocItem extends Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className="updateLocItem collapsibleBio">
         <button className="accordion" onClick={this.handleOpenClose}>{this.props.loc.title}</button>
