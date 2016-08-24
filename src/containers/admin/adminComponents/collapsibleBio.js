@@ -81,7 +81,7 @@ class CollapsibleBio extends Component {
           <div className="container">
             <div className="column-form image-column">
               <div> <img role="presentation" src={imgURL} /> </div>
-              <div> <label> Upload </label> <input type="file" name="Upload" id="file-input" onChange={this.handleImage} /> </div>
+              <div> <form> <input type="file" name="Upload" id="file-input" onChange={this.handleImage} /><label> Upload </label></form> </div>
             </div>
             <div className="column-form bigger">
               <div className="input"> Name: <textarea onChange={this.handleEdit('name')} defaultValue={this.props.bio.name} /> </div>

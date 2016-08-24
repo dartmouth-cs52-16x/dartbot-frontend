@@ -12,31 +12,13 @@ class Map extends Component {
 
   constructor(props) {
     super(props);
-
-    this.renderPins = this.renderPins.bind(this);
+    this.renderContent = this.renderContent.bind(this);
   }
   componentWillMount() {
     this.props.fetchLocs();
   }
-
-  renderPins() {
-    // this.props.locs.map(loc => {
-    //   console.log(loc);
-    //   console.log(loc.gps.lat);
-    //   console.log(loc.gps.long);
-    //   console.log(loc.title);
-    //   console.log(loc.content);
-    //   const latitude = loc.gps.lat;
-    //   const longitude = loc.gps.long;
-    //   // content={loc.content}
-    //   return (
-    //     <Pin
-    //       lat={latitude}
-    //       lng={longitude}
-    //       text={'A'}
-    //     />
-    //   );
-    // });
+  renderContent() {
+    console.log('print something here');
   }
 
   render() {
@@ -57,6 +39,7 @@ class Map extends Component {
               lat={loc.gps.lat}
               lng={loc.gps.long}
               text={loc.title}
+              content={loc.content}
             />
           );
         })}

@@ -3,6 +3,7 @@ import '../style.scss';
 
 export default class Pin extends Component {
   static propTypes = {
+    hover: PropTypes.bool,
     text: PropTypes.string,
   };
 
