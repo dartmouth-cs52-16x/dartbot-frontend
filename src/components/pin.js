@@ -7,6 +7,7 @@ export default class Pin extends Component {
     this.renderHover = this.renderHover.bind(this);
   }
 
+
   renderHover() {
     if (this.props.$hover) {
       return (<div />);
