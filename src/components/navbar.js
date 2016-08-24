@@ -15,7 +15,7 @@ class NavBar extends React.Component {
         <div className="pageLinks">
           <Link id="aboutLink" to="about">About</Link>
           <Link id="bioLink" to="profiles">Tour Guide Profiles</Link>
-          <Link id="botLink" to="tour">The Tour</Link>
+          <Link id="botLink" to="bot">Bot</Link>
           <Link id="adminLink" to="/admin">Admin</Link>
         </div>
       </div>

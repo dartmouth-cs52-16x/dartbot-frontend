@@ -19,11 +19,11 @@ import UpdateSurvey from './containers/admin/adminComponents/updateSurveys';
 export default (
   <div>
     <Route path="/" component={App}>
-      <IndexRoute component={Bot} />
+      <IndexRoute component={Map} />
       <Route path="about" component={About} />
       <Route path="profiles" component={BioContainer} />
       <Route path="signin" component={SignIn} />
-      <Route path="tour" component={Map} />
+      <Route path="bot" component={Bot} />
     </Route>
     <Route path="/admin" component={RequireAuth(AdminContainer)}>
       <IndexRoute component={Analytics} />

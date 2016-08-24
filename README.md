@@ -37,6 +37,10 @@ The Frontend of the project will be deployed onto a surge.sh website.
 The Server of the project uses mongoose to maintain a MongoDB provided by heroku. The server is deployed on Heroku.
 The Bot for the project uses Botkit as the primary means of operating a Facebook Messenger bot and Wit AI to increase the bot's ability to understand queries when parsing for a question's intent. It will also be deployed on heroku.
 
+## Final Web App Components
+### Tour Guide Profiles
+Profiles of the Tour Guides are disaplayed on the Tour Guide Profiles tab on the user aspect of the site. Upon signing in, administrators may add new tour guides using the forms in the New Tour Guide Profiles tab on the administration-side of the site. Images are stored and retrieved from Amazon S3. For the user profiles, we had to configure the backend to handle the CRUD actions of the user profiles and also getting a signed URL request for each profile when a user uploads a photo. Then the front-end receives this signed URL as a response from the server, which conveniently contains the profile's id in the URL, and the front-end is the one who actually posts the image to Amazon S3's API. 
+
 ## Authors
 
 Alma Wang, Ahsan Azim, Larissa Chen, Ian Bateman, Robin Jayaswal
