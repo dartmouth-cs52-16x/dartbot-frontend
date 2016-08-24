@@ -4,7 +4,7 @@ import { fetchLocs, createLoc } from '../../../actions';
 import UpdateLocItem from './update-loc-item';
 import Textarea from 'react-textarea-autosize';
 import GoogleMap from 'google-map-react';
-import Pin from '../../../components/pin';
+import NewLocPin from '../../../components/newLocPin';
 
 class UpdateLoc extends Component {
   static defaultProps = {
@@ -42,7 +42,6 @@ class UpdateLoc extends Component {
   }
 
   onMapClick(event) {
-    console.log(event);
     this.setState({ newLoc: { ...this.state.newLoc, gps: { lat: event.lat, long: event.lng } } });
   }
 
@@ -85,7 +84,7 @@ class UpdateLoc extends Component {
                   }}
                   onClick={this.onMapClick}
                 >
-                  <Pin lat={this.state.newLoc.gps.lat} lng={this.state.newLoc.gps.long} text="here" />
+                  <NewLocPin lat={this.state.newLoc.gps.lat} lng={this.state.newLoc.gps.long} text="here" />
                 </GoogleMap>
               </div>
             </center>

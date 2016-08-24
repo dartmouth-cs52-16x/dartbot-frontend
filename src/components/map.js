@@ -20,9 +20,23 @@ class Map extends Component {
   }
 
   renderPins() {
-    this.props.locs.map(loc => {
-      return <Pin lat={loc.gps.lat} lng={loc.gps.long} text={loc.title} content={loc.content} />;
-    });
+    // this.props.locs.map(loc => {
+    //   console.log(loc);
+    //   console.log(loc.gps.lat);
+    //   console.log(loc.gps.long);
+    //   console.log(loc.title);
+    //   console.log(loc.content);
+    //   const latitude = loc.gps.lat;
+    //   const longitude = loc.gps.long;
+    //   // content={loc.content}
+    //   return (
+    //     <Pin
+    //       lat={latitude}
+    //       lng={longitude}
+    //       text={'A'}
+    //     />
+    //   );
+    // });
   }
 
   render() {
@@ -36,8 +50,16 @@ class Map extends Component {
             key: 'AIzaSyDkwluTAgwsZKe2_u2cW2rvSe1dBVgz6zw',
           }}
         >
-          {this.renderPins()}
-          <Pin lat={43.70357989999999} lng={-72.28878229999998} text={'A'} />
+        {this.props.locs.map(loc => {
+          return (
+            <Pin
+              key={loc._id}
+              lat={loc.gps.lat}
+              lng={loc.gps.long}
+              text={loc.title}
+            />
+          );
+        })}
         </GoogleMap>
       </div>
     );
