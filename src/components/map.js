@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 class Map extends Component {
   static defaultProps = {
     center: { lat: 43.70357989999999, lng: -72.28878229999998 },
-    zoom: 16,
+    zoom: 17,
   };
 
   constructor(props) {
@@ -53,6 +53,7 @@ class Map extends Component {
         {this.props.locs.map(loc => {
           return (
             <Pin
+              key={loc._id}
               lat={loc.gps.lat}
               lng={loc.gps.long}
               text={loc.title}
