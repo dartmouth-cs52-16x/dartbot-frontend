@@ -12,17 +12,13 @@ class Map extends Component {
 
   constructor(props) {
     super(props);
-
-    this.renderPins = this.renderPins.bind(this);
+    this.renderContent = this.renderContent.bind(this);
   }
   componentWillMount() {
     this.props.fetchLocs();
   }
-
-  renderPins() {
-    this.props.locs.map(loc => {
-      return <Pin lat={loc.gps.lat} lng={loc.gps.long} text={loc.title} content={loc.content} />;
-    });
+  renderContent() {
+    console.log('print something here');
   }
 
   render() {
@@ -36,8 +32,17 @@ class Map extends Component {
             key: 'AIzaSyDkwluTAgwsZKe2_u2cW2rvSe1dBVgz6zw',
           }}
         >
-          {this.renderPins()}
-          <Pin lat={43.70357989999999} lng={-72.28878229999998} text={'A'} />
+        {this.props.locs.map(loc => {
+          return (
+            <Pin
+              key={loc._id}
+              lat={loc.gps.lat}
+              lng={loc.gps.long}
+              text={loc.title}
+              content={loc.content}
+            />
+          );
+        })}
         </GoogleMap>
       </div>
     );
