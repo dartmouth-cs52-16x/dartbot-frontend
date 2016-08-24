@@ -3,16 +3,28 @@ import '../style.scss';
 
 export default class Pin extends Component {
   static propTypes = {
-    hover: PropTypes.bool,
+    content: PropTypes.string,
     text: PropTypes.string,
   };
 
   static defaultProps = {};
 
+  renderHover() {
+    if (this.props.$hover) {
+      return (
+        <div id="contentBlock">{this.props.content}</div>
+      );
+    }
+    return (
+      <div />
+    );
+  }
+
   render() {
     return (
       <div className="pinContainer">
         <p className="pinLetter">{this.props.text}</p>
+        {this.renderHover()}
       </div>
     );
   }

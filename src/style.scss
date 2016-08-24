@@ -147,8 +147,11 @@ iframe {
   text-align: center;
   font-size: 15px;
   background-color: #ffffff;
+  z-index: 999
 }
-.pinLetter {}
+.pinLetter {
+  display: inline-block;
+}
 .admin {
   display: flex;
   flex-flow: column;
@@ -157,6 +160,30 @@ iframe {
   h1 {
     margin: auto;
   }
+}
+#contentBlock {
+  height: 180px;
+  width: 180px;
+  padding: 20px 20px 20px 20px;
+  border: 2px solid #2980b9;
+  font-size: 12px;
+  background-color: #ffffff;
+  text-align: left;
+  z-index: 99999;
+  display: inline-block;
+  border-radius: 10px;
+  box-shadow: 0px 0px 1px 1px #999;
+  margin-top: -5px;
+  overflow-y: scroll;
+}
+a[href^="http://maps.google.com/maps"]{display:none !important}
+a[href^="https://maps.google.com/maps"]{display:none !important}
+
+.gmnoprint a, .gmnoprint span, .gm-style-cc {
+    display:none;
+}
+.gmnoprint div {
+    background:none !important;
 }
 .adminNav {
    .pageLinks {
