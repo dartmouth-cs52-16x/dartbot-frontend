@@ -7,18 +7,10 @@ import { connect } from 'react-redux';
 class Map extends Component {
   static defaultProps = {
     center: { lat: 43.70357989999999, lng: -72.28878229999998 },
-    zoom: 17,
+    zoom: 18,
   };
-
-  constructor(props) {
-    super(props);
-    this.renderContent = this.renderContent.bind(this);
-  }
   componentWillMount() {
     this.props.fetchLocs();
-  }
-  renderContent() {
-    console.log('print something here');
   }
 
   render() {
@@ -26,6 +18,7 @@ class Map extends Component {
       <div id="mapContainer">
         <GoogleMap
           id="googlemapContainer"
+          options={{ scrollwheel: false, minZoom: 18, maxZoom: 18, disableDefaultUI: true }}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}
           bootstrapURLKeys={{
