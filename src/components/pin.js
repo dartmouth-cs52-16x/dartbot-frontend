@@ -2,13 +2,15 @@ import React, { PropTypes, Component } from 'react';
 import '../style.scss';
 
 export default class Pin extends Component {
+
   static propTypes = {
     content: PropTypes.string,
     text: PropTypes.string,
   };
-
-  static defaultProps = {};
-
+  constructor(props) {
+    super(props);
+    this.renderHover = this.renderHover.bind(this);
+  }
   renderHover() {
     if (this.props.$hover) {
       return (
@@ -19,7 +21,6 @@ export default class Pin extends Component {
       <div />
     );
   }
-
   render() {
     return (
       <div className="pinContainer">

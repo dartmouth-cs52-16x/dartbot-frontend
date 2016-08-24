@@ -303,6 +303,7 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
    .pinContainer {
      width: 30px;
      height: 30px;
+     background-color: lighten(blue, 30);
    }
    .pinLetter {
      font-size: 12px;
