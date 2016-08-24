@@ -176,6 +176,7 @@ iframe {
   margin-top: -5px;
   overflow-y: scroll;
 }
+// Attribution: http://stackoverflow.com/questions/12499886/how-to-hide-or-disable-the-google-logo-footer-copyright-on-google-maps-javascr/23613338
 a[href^="http://maps.google.com/maps"]{display:none !important}
 a[href^="https://maps.google.com/maps"]{display:none !important}
 
