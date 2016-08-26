@@ -29,8 +29,12 @@ A basic navigation bar provides links to different components on the Web App.
 ### Map
 The homepage of the Web App is an interactive map component created using a node module adapting the Google Maps API. Each pin is a location retrieved from the tour landmark locations obtained from the backend. Hovering over a pin displays a box containing content about the location.
 
+!(Map Homepage)[/imgs/Map-Homepage.png]
+
 ### Tour Guide Profiles
 Profiles of the Tour Guides are displayed on the Tour Guide Profiles tab on the user aspect of the site. Upon signing in, administrators may add new tour guides using the forms in the New Tour Guide Profiles tab on the administration-side of the site. Images are stored and retrieved from Amazon S3. For the user profiles, we had to configure the backend to handle the CRUD actions of the user profiles and also getting a signed URL request for each profile when a user uploads a photo. Then the front-end receives this signed URL as a response from the server, which conveniently contains the profile's id in the URL, and the front-end is the one who actually posts the image to Amazon S3's API.
+
+!(Tour Guide Profiles)[/imgs/TourGuideProfiles.png]
 
 ### Bot iframe
 The Bot page in the Web App provides an iframe to allows the user to sign in an send the bot a message. In order to see the answer or ask additional questions the user must open up Facebook Messenger bot to continue the conversation.
@@ -44,14 +48,21 @@ Accessing the Admin portion of the website requires authentication validation af
 ### Analytics
 Using data obtained from the Facebook Messenger Bot's interactions with users, that analytics page plots frequency charts for location, queries and survey responses using D3 based graphs. The Location Hits graph plots the amount of times a user sends a location that is closest to a particular landmark. The Query Hits graph plots the number of time a user inquires about a particular topic. The Survey Question graphs plot the number of times users have answered a particular survey question and the mean answer give.
 
+!(Analytics)[/imgs/Analytics.png]
+
 ### Tour Guide Profiles
 Tour Guide Profiles can be added or updated in the admin side of the Web App. To add a new user click on the first item titled New. A animated collapsible container will open and enable the admin to put in information. The existing tour guide profiles  Add or set a new a profile picture for the tour guide by double clicking on the Upload button. The image is uploaded to Amazon S3.
+
 
 ### Tour Locations
 Add or update tour locations in the same manner as adding a tour guide profile. The app enables the admin to choose the GPS coordinates of the location by clicking on a point on a map, using a Google Maps API React Component. To select the GPS coordinates for a new location on the tour, the admin simply clicks on the desired location on the map and a pin appears at the selected location. To edit an existing location the admin can either manually change the latitude and longitude or click "Edit Location" which enables GPS selection by clicking. Otherwise the clicking on the map has no effect on editing the tour location. To stop editing a location by editing the admin should click "Stop Edit Location". The changes to the location only occur on the local state and will only be saved after the user clicks "Update".
 
+!(Edit Tour Locations)[/imgs/Locations.png]
+
 ### Queries/Responses
 An admin can add new queries that the bot can respond to or update the responses the bot has through the Web App. To add a new query the admin would open the update/add box and fill out the 'Query' and 'Response' fields. (NOTE: DartBot uses Wit.ai language processing so additional "training" work is required for queries added through the web app). To update a response the admin clicks on the query they want to update. This automatically changes the fields in the top box. By modifying the response field and clicking update, the new response replaces the previous response for a given query.
+
+!(Queries)[/imgs/Queries.png]
 
 ### New Surveys
 Currently the bot only supports survey questions that can be answered on a scale from 1 to 5. The admin is able to type out a question and click 'Add Survey Question' to add to the list of questions the bot is able to ask.
@@ -62,11 +73,8 @@ In order to maintain limited access to the admin section of the website, new adm
 ## Deployment
 
 The Frontend Web App portion is deployed via surge onto cs52-dartbot.surge.sh using travis to enable automatic deployment from GitHub.
-The Server of the project uses mongoose to maintain a MongoDB provided by heroku. The server is deployed on Heroku.
-The Bot for the project uses Botkit as the primary means of operating a Facebook Messenger bot and Wit AI to increase the bot's ability to understand queries when parsing for a question's intent. It will also be deployed on heroku.
-
-## Final Web App Components
-
+The Server of the project uses mongoose to maintain a MongoDB provided by Heroku. The server is deployed on Heroku.
+The Bot for the project uses Botkit as the primary means of operating a Facebook Messenger bot and Wit AI for natural language processing of user queries. The bot is also deployed on Heroku.
 
 ## Authors
 
