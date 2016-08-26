@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Textarea from 'react-textarea-autosize';
 import { updateLoc, deleteLoc } from '../../../actions';
 import GoogleMap from 'google-map-react';
-import Pin from '../../../components/pin';
+import NewLocPin from '../../../components/newLocPin';
 
 class UpdateLocItem extends Component {
   static defaultProps = {
@@ -13,12 +13,15 @@ class UpdateLocItem extends Component {
     super(props);
     this.state = {
       loc: props.loc,
+      editLoc: false,
     };
     this.handleEdit = this.handleEdit.bind(this);
     this.handleGPSEdit = this.handleGPSEdit.bind(this);
     this.handleOpenClose = this.handleOpenClose.bind(this);
     this.onDeleteClick = this.onDeleteClick.bind(this);
     this.onUpdateClick = this.onUpdateClick.bind(this);
+    this.onEditLocClick = this.onEditLocClick.bind(this);
+    this.onMapClick = this.onMapClick.bind(this);
   }
 
   onDeleteClick() {
@@ -27,6 +30,15 @@ class UpdateLocItem extends Component {
 
   onUpdateClick() {
     this.props.updateLoc(this.state.loc, this.state.loc.id);
+  }
+
+  onEditLocClick() {
+    this.setState({editLoc: !this.state.editLoc});
+  }
+
+  onMapClick(event) {
+    if(this.state.editLoc)
+      this.setState({ loc: { ...this.state.loc, gps: { lat: event.lat, long: event.lng } } });
   }
 
   handleGPSEdit(field) {
@@ -51,6 +63,13 @@ class UpdateLocItem extends Component {
   }
 
   render() {
+    const editLoc = () => {
+      if(!this.state.editLoc){
+        return (<div>Edit Location</div>);
+      } else {
+          return (<div>Stop Edit Location</div>);
+      }
+    }
     return (
       <div className="updateLocItem collapsibleBio">
         <button className="accordion" onClick={this.handleOpenClose}>{this.props.loc.title}</button>
@@ -61,20 +80,22 @@ class UpdateLocItem extends Component {
             <div className="map">
               <div className="newLocMap">
                 <GoogleMap
-                  center={{ lat: parseFloat(this.state.loc.gps.lat), lng: parseFloat(this.state.loc.gps.long) }}
+                  center={{ lat: parseFloat(this.props.loc.gps.lat), lng: parseFloat(this.props.loc.gps.long) }}
                   defaultZoom={this.props.zoom}
                   bootstrapURLKeys={{
                     key: 'AIzaSyDkwluTAgwsZKe2_u2cW2rvSe1dBVgz6zw',
                   }}
+                  onClick={this.onMapClick}
                 >
-                  <Pin lat={this.state.loc.gps.lat} lng={this.state.loc.gps.long} text="" />
+                  <NewLocPin lat={this.state.loc.gps.lat} lng={this.state.loc.gps.long} text="" />
                 </GoogleMap>
               </div>
-              <div className="newbar">
+              <div className="newbar editLocBar">
                 <label>Latitude</label>
                 <input value={this.state.loc.gps.lat} onChange={this.handleGPSEdit('lat')} />
                 <label>Longitude</label>
                 <input value={this.state.loc.gps.long} onChange={this.handleGPSEdit('long')} />
+                <button onClick={this.onEditLocClick}>{editLoc()}</button>
               </div>
             </div>
           </div>

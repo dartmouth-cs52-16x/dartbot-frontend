@@ -15,7 +15,6 @@ const emptyBio = {
 class UpdateContainer extends Component {
   componentDidMount() {
     this.props.fetch(this);
-    console.log('mounting');
   }
   componentWillReceieveProps() {
     this.setState({});
@@ -42,7 +41,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => {
   return {
     update: (bio, file) => {
-      console.log(bio);
       dispatch(updateBio(bio, file, bio._id));
     },
     create: (bio, file) => {

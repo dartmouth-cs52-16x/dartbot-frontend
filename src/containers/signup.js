@@ -32,6 +32,11 @@ class SignUp extends Component {
   }
   onSignUp(event) {
     this.props.signupUser(this.state);
+    this.setState({
+      email: '',
+      password: '',
+      username: ''
+    });
   }
   render() {
     return (

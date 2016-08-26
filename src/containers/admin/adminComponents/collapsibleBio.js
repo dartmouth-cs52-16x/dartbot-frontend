@@ -4,7 +4,7 @@ class CollapsibleBio extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { bio: { name: '', major: '', year: '', content: '' }, error: false, file: null, imgURL: null };
+    this.state = { bio: props.bio, error: false, file: null, imgURL: null };
     this.handleEdit = this.handleEdit.bind(this);
     this.handleSave = this.handleSave.bind(this);
     this.handleOpenClose = this.handleOpenClose.bind(this);
@@ -56,8 +56,8 @@ class CollapsibleBio extends Component {
       if (!this.state.bio.name || !this.state.bio.major || !this.state.bio.year || !this.state.bio.content) {
         this.setState({ error: true });
       } else {
-        this.props.create(result, this.state.file);
-        this.setState({ bio: { name: '', major: '', year: '', content: '' }, error: false, file: null });
+        this.props.create(this.state.bio, this.state.file);
+        this.setState({ bio: { name: '', major: '', year: '', content: '' }, error: false, file: null, imgURL: null });
       }
       return;
     }
@@ -84,12 +84,12 @@ class CollapsibleBio extends Component {
               <div> <form> <input type="file" name="Upload" id="file-input" onChange={this.handleImage} /><label> Upload </label></form> </div>
             </div>
             <div className="column-form bigger">
-              <div className="input"> Name: <textarea onChange={this.handleEdit('name')} defaultValue={this.props.bio.name} /> </div>
-              <div className="input"> Year: <textarea onChange={this.handleEdit('year')} defaultValue={this.props.bio.year} /> </div>
-              <div className="input"> Major: <textarea onChange={this.handleEdit('major')} defaultValue={this.props.bio.major} /> </div>
+              <div className="input"> Name: <textarea onChange={this.handleEdit('name')} value={this.state.bio.name} /> </div>
+              <div className="input"> Year: <textarea onChange={this.handleEdit('year')} value={this.state.bio.year} /> </div>
+              <div className="input"> Major: <textarea onChange={this.handleEdit('major')} value={this.state.bio.major} /> </div>
             </div>
             <div className="column-form bigger">
-              <div> <label> Content: </label> <textarea onChange={this.handleEdit('content')} defaultValue={this.props.bio.content} /> </div>
+              <div> <label> Content: </label> <textarea onChange={this.handleEdit('content')} value={this.state.bio.content} /> </div>
             </div>
           </div>
           <div className="error"> {error}</div>

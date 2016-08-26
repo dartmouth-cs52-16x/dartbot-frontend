@@ -127,7 +127,6 @@ export function updateBio(bio, file, id) {
 export function deleteBio(id) {
   return (dispatch) => {
     axios.delete(`${ROOT_URL}/bios/${id}`, { headers: { authorization: localStorage.getItem('token') } }).then((response) => {
-      console.log(response);
       dispatch({
         type: ActionTypes.DELETE_BIO,
         bio: response.data,
@@ -278,11 +277,7 @@ export function signinUser(loginInfo) {
 export function signupUser(loginInfo) {
   return (dispatch) => {
     axios.post(`${ROOT_URL}/signup`, loginInfo)
-    .then(response => {
-      dispatch({ type: ActionTypes.AUTH_USER });
-      localStorage.setItem('token', response.data.token);
-      browserHistory.push('/');
-    }).catch(err => {
+    .catch(err => {
       dispatch(reportError(`Sign Up Failed: ${err.response.data}`));
     });
   };

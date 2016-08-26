@@ -328,6 +328,12 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
      flex-flow: row;
      justify-content: center;
    }
+   .editLocBar {
+     padding: 10px;
+   }
+   .editLocBar button{
+     font-size: 10px;
+   }
  }
 
  .updateLocButtons {
@@ -456,9 +462,6 @@ div.panel.show {
     font-size: 11.8px;
     cursor: pointer;
     // color:#fff;
-    .delete{
-
-    }
   }
 }
 /**---Image column----**/
