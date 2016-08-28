@@ -81,3 +81,5 @@ The Bot for the project uses Botkit as the primary means of operating a Facebook
 Alma Wang, Ahsan Azim, Larissa Chen, Ian Bateman, Robin Jayaswal
 
 ## Acknowledgement
+
+Techniques for Web Development and introduction to the React framework from Dartmouth College's CS52 Course taught by Tim Tregubov. 
