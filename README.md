@@ -75,9 +75,15 @@ In order to maintain limited access to the admin section of the website, new adm
 
 ## Deployment
 
-The Frontend Web App portion is deployed via surge onto cs52-dartbot.surge.sh using travis to enable automatic deployment from GitHub.
-The Server of the project uses mongoose to maintain a MongoDB provided by Heroku. The server is deployed on Heroku.
-The Bot for the project uses Botkit as the primary means of operating a Facebook Messenger bot and Wit AI for natural language processing of user queries. The bot is also deployed on Heroku.
+The Frontend Web App portion is deployed via surge onto cs52-dartbot.surge.sh (see the CNAME file). To deploy use the command
+
+```
+npm run deploy
+```
+
+The Server of the project uses mongoose to maintain a MongoDB provided by Heroku. The server is deployed on Heroku.  Further details on deployment are on the server github.
+
+The Bot for the project uses Botkit as the primary means of operating a Facebook Messenger bot and Wit AI for natural language processing of user queries. The bot is also deployed on Heroku. Further details about deployment are on the facebook bot github. 
 
 ## Authors
 
