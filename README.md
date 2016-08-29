@@ -45,6 +45,9 @@ Right now our homescreen displays an interactive map with an example pin of one 
 ## Admin-side Components
 Accessing the Admin portion of the website requires authentication validation after a sign in page. The admin components include analytics, updating tour guide profiles, updating query responses, updating tour locations, adding new survey questions and adding new administrators.
 
+The testing account has the username: a and password: a
+
+
 ### Analytics
 Using data obtained from the Facebook Messenger Bot's interactions with users, that analytics page plots frequency charts for location, queries and survey responses using D3 based graphs. The Location Hits graph plots the amount of times a user sends a location that is closest to a particular landmark. The Query Hits graph plots the number of time a user inquires about a particular topic. The Survey Question graphs plot the number of times users have answered a particular survey question and the mean answer give.
 
@@ -82,4 +85,4 @@ Alma Wang, Ahsan Azim, Larissa Chen, Ian Bateman, Robin Jayaswal
 
 ## Acknowledgement
 
-Techniques for Web Development and introduction to the React framework from Dartmouth College's CS52 Course taught by Tim Tregubov. 
+Techniques for Web Development and introduction to the React framework from Dartmouth College's CS52 Course taught by Tim Tregubov.

@@ -219,7 +219,7 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
     background-color: $buttonColor;
   }
   button:hover {
-    background-color: darken($buttonColor, 10);
+    background-color: darken($buttonColor, 20);
   }
 }
 
