@@ -7,6 +7,11 @@ The User-side of the Web App offers information related to Dartmouth tours to th
 
 An admin link on the Web App requires signing in to access and provides capabilities to edit all content that the Messenger bot and Web App provide the user. This includes editing landmark/locations on the tour, tour guide profiles, responses to queries, survey questions and adding new administrator accounts.
 
+Other Repos:
+* [Facebook Bot](https://github.com/dartmouth-cs52/dartbot-fb-bot) 
+* [Server](https://github.com/dartmouth-cs52/dartbot-server)
+* [Mobile](https://github.com/dartmouth-cs52/DartBotReactNative)
+
 ## Architecture
 
 DartBot is separated into three different repositories: the Frontend, the Server and the Bot. The Frontend repo contains code for the web application aspect of the project. The Server repo creates the RESTFUL API database using MongoDB and is used by both the Frontend and Bot. The Bot repo uses Botkit and wit.ai to create a conversational Messenger bot.
